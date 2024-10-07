@@ -1,6 +1,7 @@
 ---
 permalink: /
-title: "Hello there, I'am Sevin!:wave:"
+title: "Hello there, I'am Sevin!👋
+"
 excerpt:"About me"
 author_profile: true
 redirect_from: 
