@@ -21,7 +21,7 @@ repository               : "sev-90/sevin.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "headshot.jpeg"
+  # avatar           : "headshot.jpeg"
   name             : "Sevin Mohammadi"
   pronouns         : # example: "she/her"  
   bio              : "PhD Candidate at Columbia University"
