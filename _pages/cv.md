@@ -11,5 +11,5 @@ redirect_from:
 {% include base_path %}
 {% include seo.html %}
 
-## My CV is available here: [Sevin Mohammadi](/files/mycv.pdf)
+## My CV is available here: [Sevin Mohammadi's CV](/files/mycv.pdf)
 ### Last Updated 10/07/2024
