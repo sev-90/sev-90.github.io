@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Sevin's Homepage"
+title                    : "Welcome to My Homepage"
 title_separator          : "-"
 name                     : &name "Sevin Mohammadi"
 description              : &description "personal description"
