@@ -29,7 +29,7 @@ Audrey Olivier, Matt Adams, Sevin Mohammadi, Andrew Smyth, Kathleen Thomson, Tim
 ----
 1. [**"Simulating NYC Hospital Load Balancing During COVID-19,"**](https://doi.org/10.1109/WSC52266.2021.9715419)\
    E. L. de Larrea, H. Lam, E. Sanabria, J. Sethuraman, S. Mohammadi, A. Olivier, A. Smyth et al., IEEE: Winter Simulation Conference, 2021
-2. [**"The Role of Drivers' Social Interactions in their Driving Behavior: Empirical Evidence and Implication for Traffic Flow,"**](https://doi.org/10.1109/WSC52266.2021.9715419)\
+2. [**"The Role of Drivers' Social Interactions in their Driving Behavior: Empirical Evidence and Implication for Traffic Flow,"**](https://doi.org/10.1016/j.trf.2021.04.002)\
    Sevin Mohammadi, Ramin Arvin, Asad J Khattak, Subhadeep Chakraborty, Transportation Research Part F: Traffic Psychology \& Behavior, 2021.
 
 
