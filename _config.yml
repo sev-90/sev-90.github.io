@@ -38,6 +38,7 @@ author:
   semantic         : # URL
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
+  CV               : "https://scholar.google.com/citations?user=ijXV3-8AAAAJ&hl=en"
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
