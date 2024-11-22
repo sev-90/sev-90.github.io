@@ -9,7 +9,7 @@ author_profile: true
 1. **Dynamic penalty-based dispatching decision-making for improved EMS response in urban environments: a heuristic approach**\
 Sevin Mohammadi, Audrey Olivier, Andrew W. Smyth, under review.
 2. [**Surrogate Modeling of Trajectory Map-matching in Urban Road Networks using Transformer Sequence-to-Sequence Model**](https://doi.org/10.48550/arXiv.2404.12460)\
-Sevin Mohammadi, Andrew W. Smyth, Revision submitted to  IEEE Intelligent Transportation Systems.
+Sevin Mohammadi, Andrew W. Smyth, under review.
 
 2023
 ----
