@@ -9,8 +9,8 @@ redirect_from:
   - /about.html
 ---
 {% include seo.html %}
-I am a PhD candidate in Civil Engineering & Engineering Mechanics Department at Columbia University, advised by [Prof. Andrew W. Smyth](https://www.engineering.columbia.edu/faculty-staff/directory/andrew-w-smyth). My thesis focuses on ``Probabilistic Machine Learning for Travel Time and Trajectory Modeling and Decision-making." As a research assistant at the [The Center for Smart Streetscapes (CS3)](https://cs3-erc.org/), I develope data analytics and machine learning solutions to address mobility & operational challenges in urban road networks. 
+I'm Sevin Mohammadi, an engineer and a data scientist. I grew up in Ardabil 🏡, a picturesque town in northwestern Iran, nestled between Mount Sabalan 🗻 and the Caspian Sea 🌊 , surrounded by the scenic Heyran Road 🏞 🍃, hazelnut forests 🌳 🌰, and natural hot springs ♨ 🏊‍♀️.
 
-Prior to this, I was a research assistant at the Center for Transportation Research (CTR) at the University of Tennessee Knoxville, during my Master's study. During my time at CTR, I concentrated on the statistical analysis of human driving behavior.
+To pursue my dreams, I first moved to Tehran for my undergraduate and graduate studies and later to the United States to further continue my graduate education 📚. I earned a master’s degree in Engineering from the University of Tennessee, Knoxville, followed by a PhD from the Civil Engineering and Engineering Mechanics Department at Columbia University. I successfully defended my PhD dissertation, ``Geospatial Probabilistic Machine Learning for Analyzing Urban Vehicular Mobility Patterns with Decision-Making Applications," in December 2024 👩‍🎓 🥳.
 
-
+As an engineer, I am deeply committed to shaping the future of smart transportation and cities. As a data scientist, I harness the power of data analytics and state-of-the-art machine learning models to develop innovative solutions that drive meaningful impact. My work focuses on transforming complex data into actionable insights, and I have conducted numerous impactful applied research projects at the intersection of these fields, showcasing what technology can achieve in advancing urban mobility and infrastructure.
