@@ -9,7 +9,7 @@ redirect_from:
   - /about.html
 ---
 {% include seo.html %}
-I'm Sevin Mohammadi, a civil engineer and a data scientist. I grew up in Ardabil 🏡, a picturesque town in northwestern Iran, nestled between Mount Sabalan 🗻 and the Caspian Sea 🌊 , surrounded by the scenic Heyran Road 🏞 🍃, hazelnut forests 🌳 🌰, and natural hot springs ♨ 🏊‍♀️.
+I'm Sevin Mohammadi, a civil engineer and a data scientist. I grew up in Ardabil 🏡, a honey city in northwestern Iran 🍯🐝, nestled between Mount Sabalan 🗻 and the Caspian Sea 🌊 , surrounded by the scenic Heyran Road 🏞 🍃, hazelnut forests 🌳 🌰, and has lots of natural hot springs ♨ 🏊‍♀️.
 
 To pursue my dreams, I first moved to Tehran for my undergraduate and graduate studies and later to the United States to further continue my graduate education 📚. I earned a master’s degree in Engineering from the University of Tennessee, Knoxville, followed by a PhD from the Civil Engineering and Engineering Mechanics Department at Columbia University in the City of New York 🗽. I successfully defended my PhD dissertation, "Geospatial Probabilistic Machine Learning for Analyzing Urban Vehicular Mobility Patterns with Decision-Making Applications," in December 2024 👩‍🎓 🥳.
 
