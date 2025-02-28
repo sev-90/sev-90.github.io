@@ -16,4 +16,3 @@ To pursue my dreams, I first moved to Tehran for my undergraduate and graduate s
 Soon, I will be moving to beautiful lakeside Evanston, IL, for an exciting new chapter 🤩, and I am actively exploring opportunities in the Greater Chicago area 🌬😸.
 
 As an engineer and data scientist👷‍♀️👩‍💻, I leverage problem-solving expertise, advanced analytics, and state-of-the-art machine learning models to develop innovative, impactful solutions. My work focuses on transforming complex data into actionable insights, and I have led numerous high-impact applied research projects at the intersection of engineering, data science, and AI, demonstrating the transformative potential of technology.
-%in **advancing urban mobility and infrastructure**.
