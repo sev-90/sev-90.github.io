@@ -14,6 +14,9 @@ This project addresses the devastating impact of wheat rust on African crops by 
 
 The training process begins with inspecting 876 labeled samples and 610 unlabeled test samples, followed by data cleaning to remove or relabel misclassified images. Data augmentation applies transformations like flipping, rotation, and lighting adjustments to prevent overfitting. Transfer learning with a pre-trained ResNet34 model enhances feature extraction, and progressive image resizing (from 128x128 to 256x256) improves performance. The model undergoes additional fine-tuning by retraining on samples with high prediction loss. The classifier’s accuracy is monitored through error rate metrics, achieving the best possible result using optimized hyperparameters.
 
+![image](https://github.com/user-attachments/assets/e995a561-1023-4423-87cc-aec8dfbcfb99)
+
+
 References
 
     1. https://zindi.africa/competitions/iclr-workshop-challenge-1-cgiar-computer-vision-for-crop-disease/data
