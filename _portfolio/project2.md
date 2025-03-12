@@ -55,7 +55,7 @@ With the configuration parameters as presented in the config file, training took
 
 Finally, the gif below shows the agent solving the puzzle. The solution is produced using the latest version of the network and using a greedy policy (most probable move is selected at each step) : 
 
-# ![](https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/solitaire_opt_trim_1.gif)
+
 <p align="center">
-<img src="[RL-solitaire/solitaire_opt_trim_1.gif](https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/solitaire_opt_trim_1.gif)" width="400" height="400" />
+<img src="https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/solitaire_opt_trim_1.gif" width="400" height="400" />
 </p>
