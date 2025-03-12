@@ -58,5 +58,5 @@ With the configuration parameters as presented in the config file, training took
 Finally, the gif below shows the agent solving the puzzle. The solution is produced using the latest version of the network and using a greedy policy (most probable move is selected at each step) : 
 
 <p align="center">
-<img src="RL-solitaire/solitaire_opt_trim_1.gif" width="400" height="400" />
+![image](https://github.com/user-attachments/assets/2c470975-0580-440e-ab21-e83c60a5189a)
 </p>
