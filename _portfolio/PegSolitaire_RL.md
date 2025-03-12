@@ -1,5 +1,5 @@
 ---
-title: "Project #2: Solving the game of peg solitaire with a Reinforcement Learning"
+title: "Solving the game of peg solitaire with a Reinforcement Learning"
 excerpt: "This project was completed as part of my Deep Learning course's final group project in 2020."
 collection: portfolio
 ---
