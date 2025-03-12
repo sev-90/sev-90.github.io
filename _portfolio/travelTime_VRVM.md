@@ -7,25 +7,28 @@ collection: portfolio
 # variational sparse Bayesian_learning
 variational sparse Bayesian learning (relevance vector machine)
 # Abstract
-Accurate predictions of the route travel times and quantifying the reliability of the predictions are crucial in optimizing the service delivery transport in a city. This paper aims to predict the travel time distributions between any arbitrary locations in an urban network by training a probabilistic machine learning algorithm using historical trip data. In this project, variational relevance vector machines (VRVM) method and ensemble learning to probabilistically predict the trip travel time for any origin-destination pair at different times of day through learning the similarities between the previously observed travel times across the city road network. The similarities between the observed route travel times are quantified with multi-kernel function. Moreover, the VRVM method allows us to efficiently use historical data through sparse Bayesian learning that identifies the "relevance" basis functions from the entire data.  
+Accurate predictions of the route travel times and quantifying the reliability of the predictions are crucial in optimizing the service delivery transport in a city. This paper aims to predict the travel time distributions between any arbitrary locations in an urban network by training a probabilistic machine learning algorithm using historical trip data. In this project, **variational relevance vector machines (VRVM)** method and ensemble learning to **probabilistically** predict the trip travel time for any origin-destination pair at different times of day through learning the similarities between the previously observed travel times across the city road network. The similarities between the observed route travel times are quantified with multi-kernel function. Moreover, the VRVM method allows us to efficiently use historical data through sparse Bayesian learning that identifies the **``relevance'' basis functions from the entire data.  
 
 In the following, some results relating to model verification and trip travel time are presented. Then, modeling details, including the algorithm and the mathematics behind the model, can be found in the following sections.
 ## Model Verification
-Before training the VRVM model using travel time data sets, the implemented VRVM algorithm is verified with two widely used data sets: 1) $Sinc$ function, and 2) Boston housing data sets and compare the results with repoted results in literature review.
+Before training the VRVM model using travel time data sets, the implemented VRVM algorithm is verified with two widely used data sets: 
+1. **$Sinc$ function**, and
+2. **Boston housing** data sets,
+and compare the results with repoted results in literature review.
 ## Sinc function
-Using the suggested synthetic data generation in \cite{tipping2001sparse}, we evaluate the performance of the VRVM model through three different trials. The Gaussian kernel is used for training the VRVM models. For each trial, we generate 100 noisy target values, $y$ s, at 100 linearly selected $x$ s from $x \in [-10,10]$ using the function $Sinc(x)=sin(x)/x$ with Gaussian additive noise with standard deviations of 0.1, 0.2, and 0.3, respectively. The noise estimate and the root-mean-square (RMS) deviation from the true function evaluated at 1000 linearly spaced test samples in $[-10,10]$ averaged over 100 random instantiations of the noise are presented at table 1. The reported RMS deviation from the true function for Gaussian additive noise 0.1 is 0.038 \cite{bishop2013variational}.
+Using the suggested synthetic data generation in [1], we evaluate the performance of the VRVM model through three different trials. The **Gaussian kernel** is used for training the VRVM models. For each trial, we generate 100 noisy target values, $y$, at 100 linearly selected $x$ from $x \in [-10,10]$ using the function $Sinc(x)=sin(x)/x$ with **Gaussian additive noise** with standard deviations of 0.1, 0.2, and 0.3, respectively. The noise estimate and the root-mean-square (RMS) deviation from the true function evaluated at 1000 linearly spaced test samples in $[-10,10]$ averaged over 100 random instantiations of the noise are presented at table 1. The reported RMS deviation from the true function for Gaussian additive noise 0.1 is 0.038 [2].
 
 ![image](https://github.com/user-attachments/assets/416136e3-f0cb-4cfa-8945-ff24cc66606d)
 
 
 ## Boston housing data
-The housing data set contains 506 examples for median housing prices with 13 feature variables. We train the VRVM model using Gaussian kernel and based on housing data to predict housing prices. The averaged results for 10 randomly partitioned Boston Housing data into 481 training, and 25 test data sets are presented in table 1. The estimated noise and the mean squared error are 2.42 and 9.84, respectively, whereas the corresponding values reported at \cite{bishop2013variational} are 2.49 and 10.36 (\cite{bishop2013variational} utilized third order polynomial kernel), and the slight difference might be due to random data partition and different kernel type used.
+The housing data set contains 506 examples for median housing prices with 13 feature variables. We train the VRVM model using Gaussian kernel and based on housing data to predict housing prices. The averaged results for 10 randomly partitioned Boston Housing data into 481 training, and 25 test data sets are presented in table 1. The estimated noise and the mean squared error are 2.42 and 9.84, respectively, whereas the corresponding values reported at [2] are 2.49 and 10.36 ([2] utilized third order polynomial kernel), and the slight difference might be due to random data partition and different kernel type used.
  
 ![image](https://github.com/user-attachments/assets/2d5afd12-35d3-4044-8135-155a0344eda5)
 
 
 ## Travel time predictions and predictive uncertainty
-Then, trained $\mathcal{M}=20$ VRVM models are utilized to construct the predictive ensemble model. The predictive ensemble distribution is the mixture of predictive distributions of the trained models \eqref{ensemble1}. To evalute the performance of the trained models and the final ensemble model, two different metrics are deployed, the root-mean-square error (RMSE) and mean absolute percentage error (MAPE).
+Then, trained $\mathcal{M}=20$ VRVM models are utilized to construct the predictive ensemble model. The predictive ensemble distribution is the mixture of predictive distributions of the trained models \eqref{ensemble1}. To evalute the performance of the trained models and the final ensemble model, two different metrics are deployed, the **root-mean-square error (RMSE)** and **mean absolute percentage error (MAPE)**.
 Results present the predictions on unseen test data set (size of ~1.2k) for trip travel times +/- one predicted standard deviation, which represents the epistemic uncertainty automatically predicted in the adopted Bayesian learning framework. Below also is the errors histograms where error is defined as $(error = y_{predict}-y_{true})$. To evaluate the overall generalization performance of the model, we tested the trained ensemble model on five different unseen data sets. The average RMSE score was 147.24s with a standard deviation of 10.31s, while the average MAPE score was 0.45 with a standard deviation of 0.016. Overall, the scores imply a satisfactory performance specifically for most trips with medium travel time length.
 In contrast, for very short trips and very long trips, the model's performance degrades. It can be observed that for the relatively short trips, the model overestimates the travel times, and this is perhaps due to averaging effect that arises from utilizing constant width parameter in Gaussian kernel functions. While, for the long trips, the discrepancy might be due to either something unusual along the journey or the lack of enough long trip data.  
 
@@ -46,7 +49,7 @@ In contrast, for very short trips and very long trips, the model's performance d
 
 
 # Methodology
-The variational relevance vector machine is a kernel-based probabilistic machine learning algorithm that is formulated based on the sparse Bayesian learning \cite{bishop2013variational, tipping2001sparse}. This algorithm has a functional form equivalent to the support vector machine while using a sparse set of basis functions gives higher generalization performance. In sparse Bayesian learning, most parameters are automatically estimated as zero, and only a few ``relevance'' parameters are non-zero. Therefore, this approach finds a set of relevant basis functions that can be used to make efficient predictions. Sparse Bayesian learning poses prior distributions over model parameters and hyperparameters and estimates their posteriors using optimization. While the posterior distributions of most irrelevant parameters become zero, the remaining parameters are relevant parameters for the predictions. In the variational relevance vector machine, variational inference approximates the optimal posterior distributions. The following section will summarize the Bayesian model structure and the variational posteriors.
+The variational relevance vector machine is a kernel-based probabilistic machine learning algorithm that is formulated based on the sparse Bayesian learning [1-2]. This algorithm has a functional form equivalent to the support vector machine while using a sparse set of basis functions gives higher generalization performance. In sparse Bayesian learning, most parameters are automatically estimated as zero, and only a few ``relevance'' parameters are non-zero. Therefore, this approach finds a set of relevant basis functions that can be used to make efficient predictions. Sparse Bayesian learning poses prior distributions over model parameters and hyperparameters and estimates their posteriors using optimization. While the posterior distributions of most irrelevant parameters become zero, the remaining parameters are relevant parameters for the predictions. In the variational relevance vector machine, variational inference approximates the optimal posterior distributions. The following section will summarize the Bayesian model structure and the variational posteriors.
 
 ## Model specification
 Suppose our data is $\mathcal{D} = \{(\textbf{x}_i, y_i) | i=1,\dots, n\}$ where $\textbf{x}_i \in \mathbb{R}^d$ is the input feature vector, and $y_i \in \mathbb{R}$ is the target scalar. From historical data, our goal is to learn a model that given input vector $x_i$ outputs the value of the target variable $y_i$. In our travel time modeling context, using historical trip data, we train a probabilistic model that predicts the route travel time given origin-destination coordinations and the trip's start time. The probabilistic framework enables us to model the uncertainties in the travel times predictions by estimating both aleatoric and epistemic uncertainties that are attributed, to name a few, to the inherent stochasticity of the phenomenon, lack of enough knowledge, and imperfection model structure assumption. Based on the standard probabilistic formulation, the target value can be calculated by a function $f$ parametrized by $w$ as equation:
@@ -59,7 +62,7 @@ $$
 p(y|x)=\mathcal{N}(\Phi^Tw,\lambda^{-1})
 $$
 
-Here, we use Gaussian kernel to calculate multi-kernel functions since it is proven that Gaussian kernels yield higher prediction accuracy in machine learning application\cite{smola2004tutorial}. Kernel functions enable us to capture the non-linearity in the raw representation of the input space by mapping the input space onto the higher dimensional feature space that also gives rise to the higher computational power\cite{muller2001introduction}. Simply put, with kernel functions evaluated at each data point, we establish a linear relationship between the implicit feature space and the target values where the implicit higher dimensional feature space contains the quantified similarities between pairs of raw input features via Gaussian kernel function. The Gaussian multi-kernel function between two vectors $x_1$ and $x_2$ is expressed by
+Here, we use Gaussian kernel to calculate multi-kernel functions since it is proven that Gaussian kernels yield higher prediction accuracy in machine learning application[3]. Kernel functions enable us to capture the non-linearity in the raw representation of the input space by mapping the input space onto the higher dimensional feature space that also gives rise to the higher computational power\cite{muller2001introduction}. Simply put, with kernel functions evaluated at each data point, we establish a linear relationship between the implicit feature space and the target values where the implicit higher dimensional feature space contains the quantified similarities between pairs of raw input features via Gaussian kernel function. The Gaussian multi-kernel function between two vectors $x_1$ and $x_2$ is expressed by
 
 $$
 k(x_1,x_2)=\sum_{l\in L}\exp(-\frac{||x_1-x_2||^2}{l^2}),
@@ -72,8 +75,9 @@ $$
 p(w) \sim \mathcal{N}(\textbf{0}, \sigma^2_w),\\
 $$ 
 
-We define $\sigma^2_w = (\lambda\Lambda)^{-1}$ where $\Lambda=\text{diag}(\alpha_1,...,\alpha_m)$. It implies that the parameter $w_i$ depends on $\alpha_i$ which corresponds to inverse of variance of $w_i$ \cite{ueda2002bayesian}.
-In fully Bayesian paradigm, following the hierarchical prior setting, the variational RVM method considers hyperpriors over hyperparameters. To benefit from analytical propertries of the Gaussian distributions' conjugate priors, we pose a Gamma prior distribution over inverse noise variance, $\lambda$, as $p(\lambda)=\text{Gamma}(e_0,f_0)$ and a Gamma hyperprior distribution over $\alpha_k,k \in [1,\dots,m]$ as $p(\alpha_k)=\text{Gamma}(a_0,b_0)$. Initially, we set small values for $a_0$, $b_0$, $e_0$, and $f_0$ to have non-informative priors. This method called ``Automatic Relevance Determination (ARD)"  that automatically selects the relevant parameters $w_i$ based on the variance of the parameter $\sigma^2_{w_i}$ \cite{bishop2013variational}.
+We define $\sigma^2_w = (\lambda\Lambda)^{-1}$ where $\Lambda=\text{diag}(\alpha_1,...,\alpha_m)$. It implies that the parameter $w_i$ depends on $\alpha_i$ which corresponds to inverse of variance of $w_i$ [4].
+
+In fully Bayesian paradigm, following the hierarchical prior setting, the variational RVM method considers hyperpriors over hyperparameters. To benefit from analytical propertries of the Gaussian distributions' conjugate priors, we pose a Gamma prior distribution over inverse noise variance, $\lambda$, as $p(\lambda)=\text{Gamma}(e_0,f_0)$ and a Gamma hyperprior distribution over $\alpha_k,k \in [1,\dots,m]$ as $p(\alpha_k)=\text{Gamma}(a_0,b_0)$. Initially, we set small values for $a_0$, $b_0$, $e_0$, and $f_0$ to have non-informative priors. This method called ``Automatic Relevance Determination (ARD)"  that automatically selects the relevant parameters $w_i$ based on the variance of the parameter $\sigma^2_{w_i}$ [2].
 
 ## Predictive Distribution
 Bayesian learning aims at estimating the predictive posterior distribution of the future observation $y'$ for corresponding new input vector $x'$ given all previously observed data $(y,X)$ and the same modeling assumptions. The posterior predictive distribution is the marginalization of the likelihood over the posterior distributions of the model parameters, shown by
@@ -123,7 +127,7 @@ $$
 Next, we utilize the variational inference technique to derive a closed-form expression for each approximate posterior of model parameters.
 
 ## Approximate Inferences
-To find the optimal approximate posterior distribution say $q^*(\theta_j)$, the procedure is the exponentiation of the expected log of the joint probability of observed data and parameters taken over all parameters except the parameter $j$, i.e., $q(\theta_{-j})$ as shown in \eqref{var_infer} (the details of derivation can be found in \cite{bishop2013variational}:
+To find the optimal approximate posterior distribution say $q^*(\theta_j)$, the procedure is the exponentiation of the expected log of the joint probability of observed data and parameters taken over all parameters except the parameter $j$, i.e., $q(\theta_{-j})$ as shown in \eqref{var_infer} (the details of derivation can be found in [2]:
 
 $$
 q^*(\theta_j) \propto \exp\{\mathbb{E}_{-j}[\ln p(y, w, \lambda, \alpha_1,...,\alpha_m|x)]\} 
@@ -177,13 +181,13 @@ $$
 p(\hat{y}|y) = \int p(\hat{y}|\phi(\hat{x}_i),w,\lambda)q(w,\lambda)d\lambda dw.\\
 $$
 
-However, as stated in \cite{bishop2013variational}, it can be shown that for increasing number of data points, $\lambda$ tends to its mean value ($\frac{e'}{f'}$), thus the predictive distribution is approximated as
+However, as stated in [2], it can be shown that for increasing number of data points, $\lambda$ tends to its mean value ($\frac{e'}{f'}$), thus the predictive distribution is approximated as
 
 $$ 
 p(\hat{y}|y) = \int p(\hat{y}|\phi(\hat{x}_i),w,\mathbb{E}_{q(\lambda)}[\lambda])q(w)dw,\\
 $$
 
-or simply we can present it as Gaussian distribution with mean and variance as \cite{bishop2013variational},
+or simply we can present it as Gaussian distribution with mean and variance as [2],
 
 $$
 p(\hat{y}|y) = \mathcal{N}( \mu'^T\phi(\hat{x}_i),\frac{f'}{e'}+\phi(\hat{x}_i)^T\Sigma'\phi(\hat{x}_i )),\\
@@ -223,6 +227,10 @@ $$
 
 
 
-
+References:
+[1] cite{tipping2001sparse}
+[2] cite{bishop2013variational}
+[3] cite{smola2004tutorial}
+[4] cite{ueda2002bayesian}
 
 
