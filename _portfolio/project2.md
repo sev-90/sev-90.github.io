@@ -1,10 +1,10 @@
 ---
 title: "Project #2: Solving the game of peg solitaire with a Reinforcement Learning"
-# excerpt: "This project stemmed from."
+excerpt: ""
 collection: portfolio
 ---
 
-Project \#2
+
 
 # RL-solitaire
 Solving the game of peg solitaire with a Reinforcement Learning (RL) Algorithm. 
