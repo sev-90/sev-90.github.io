@@ -6,12 +6,10 @@ collection: portfolio
 
 Project \#1: Crops disease type prediction with Convolutional neural network (CNN)
 
-This project stemmed from my participation in the [ICLR Workshop Challenge CGIAR: Computer Vision for Crop Disease](https://zindi.africa/competitions/iclr-workshop-challenge-1-cgiar-computer-vision-for-crop-disease/data) in 2020.
+This project stemmed from my participation in the [ICLR Workshop Challenge CGIAR: Computer Vision for Crop Disease](https://zindi.africa/competitions/iclr-workshop-challenge-1-cgiar-computer-vision-for-crop-disease/data) in 2020. Its repostory can be accesses [here](https://github.com/sev-90/competition1-crops-disease). 
 
 
-
-
-This project addresses the devastating impact of wheat rust on African crops by developing a machine learning model to classify crops as healthy, suffering from stem rust, or affected by leaf rust. Using **convolutional neural networks (CNNs)** and the **fastai** library, the model is trained on imagery data collected from Ethiopia, Tanzania, and public sources. 
+This project developes a machine learning model to classify crops as healthy, suffering from stem rust, or affected by leaf rust, to study the devastating impact of wheat rust on African crops. Using **Convolutional NeuralNetworks (CNNs)** and the **fastai** library, the model is trained on imagery data collected from Ethiopia, Tanzania, and public sources. 
 ![image](https://github.com/user-attachments/assets/2fd5f3bf-1136-4a2a-9ac5-f29bf558a015)
 
 The training pipeline involves **data inspection, cleaning, augmentation, transfer learning with ResNet34, progressive image resizing, and model re-training**. Key techniques include identifying and correcting mislabeled images, augmenting the small dataset to enhance generalization, and progressively resizing images to improve accuracy.
