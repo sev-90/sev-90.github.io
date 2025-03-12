@@ -1,6 +1,6 @@
 ---
-title: "Project #4: variational sparse Bayesian learning (relevance vector machine)"
-excerpt: "predictions of the route travel times and quantifying the reliability of the predictions"
+title: "Variational Sparse Bayesian learning with Relevance Vector Machine)"
+excerpt: "This project predicts route travel times and quantifies the uncertainty of the predictions."
 collection: portfolio
 ---
 
