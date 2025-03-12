@@ -25,12 +25,12 @@ After calculating the vehicle's average speed at each roadway segment, the emiss
 
 $$ Q_{ij} = q_{i,j,k} l_j $$
 
-where Q_{ij} (g) and q_{i,j,k} (g/km) are the emission and hot emission factor of pollutant type k generetaed by vehicle i at segment j, respectively. l_j is the segment length which is available in New York City shapefile.
+where $Q_{ij}$ (g) and $q_{i,j,k}$ (g/km) are the emission and hot emission factor of pollutant type $k$ generetaed by vehicle $i$ at segment $j$, respectively. $l_j$ is the segment length which is available in New York City shapefile.
 The hot emission factor of each pollutant can be calculated as below:
 
 $$q_{i,j,k} = \frac{\alpha_kv_{i,j}^2 + \beta_kv_{i,j} + \lambda_k}{\epsilon_kv_{i,j}^2 + \zeta_kv_{i,j} + \eta_k}$$
 
-where the v_{i,j} (km/h) is the average speed of vehicle i at segment j. The parameters values are presented at the table below [1].
+where the $v_{i,j}$ (km/h) is the average speed of vehicle $i$ at segment $j$. The parameters values are presented at the table below [1].
 
 
 |$k$|$\alpha_k$|$\beta_k$|$\lambda_k$|$\epsilon_k$|$\zeta_k$|$\eta_k$ 
@@ -48,7 +48,7 @@ In this project, **semivariograms** are calculated to assess the **spatial corre
 
 $$ \lambda(h) = \frac{1}{2}E[(z(s_i) - z(s_i+h))^2]$$
 
-where z(s_i) is the value of a spatial random variable $s_i$ and z(s_i + h) is the value of the neighbor random variable s_i + h with $h$ as the distance between two points.
+where $z(s_i)$ is the value of a spatial random variable $s_i$ and $z(s_i + h)$ is the value of the neighbor random variable $s_i + h$ with $h$ as the distance between two points.
 Herein, the sample semivariances are calculated and shown by the variogram plot below. Then, the **exponential Variogram** has been fitted to the the semivariances.  
 ![image](https://github.com/user-attachments/assets/079df675-0f39-4661-bbd9-f6d52c7e454e)
 
@@ -56,7 +56,7 @@ Herein, the sample semivariances are calculated and shown by the variogram plot 
 
 
 ## Kriging
-After calculating the variograms, the best **linear model** can be estimated to predict vehicular emissions at intermediate locations. The **semivariances** are used to calculate the weights of the linear estimator. Suppose, $z(x_i)s, i=1,..N$ are the observed values at locations $x_i$s, thus for any new location $x_0$ the value of $z(x_0)$ can be calculated as follows [2]:
+After calculating the variograms, the best **linear model** can be estimated to predict vehicular emissions at intermediate locations. The **semivariances** are used to calculate the weights of the linear estimator. Suppose, $z(x_i), i=1,..N$ are the observed values at locations $x_i$, thus for any new location $x_0$ the value of $z(x_0)$ can be calculated as follows [2]:
 
 $$Z(x_0) = \sum_{i=1}^{N} = \lambda_iz(x_i)$$
 
