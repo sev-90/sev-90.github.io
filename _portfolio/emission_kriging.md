@@ -1,5 +1,5 @@
 ---
-title: "Project #3: Spatiotemporal study of vehicular emission pattern leveraging vehicular trajectory data and modeling techniques such as kriging and autoregressive"
+title: "Project #3: Spatial and temporal pattern of light-duty vehicles' emission in Manhattan, NY, using Kriging and autoregressive models"
 excerpt: "This project was completed as part of my Data Modeling course's final project in 2021."
 collection: portfolio
 ---
@@ -30,7 +30,7 @@ The hot emission factor of each pollutant can be calculated as below:
 
 $$q_{i,j,k} = \frac{\alpha_kv_{i,j}^2 + \beta_kv_{i,j} + \lambda_k}{\epsilon_kv_{i,j}^2 + \zeta_kv_{i,j} + \eta_k}$$
 
-where the $v_{i,j} (km/h)$ is the average speed of vehicle i at segment j. The parameters values are presented at the table below [1].
+where the $v_{i,j}$ (km/h) is the average speed of vehicle i at segment j. The parameters values are presented at the table below [1].
 
 
 |$k$|$\alpha_k$|$\beta_k$|$\lambda_k$|$\epsilon_k$|$\zeta_k$|$\eta_k$ 
