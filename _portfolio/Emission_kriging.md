@@ -1,5 +1,5 @@
 ---
-title: "Project #3: Spatial and temporal pattern of light-duty vehicles' emission using Kriging and autoregressive models"
+title: "Spatial and temporal pattern of light-duty vehicles' emission using Kriging and autoregressive models"
 excerpt: "This project was completed as part of my Data Modeling course's final project in 2021."
 collection: portfolio
 ---
