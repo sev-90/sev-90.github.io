@@ -9,46 +9,61 @@ collection: portfolio
 # RL-solitaire
 Solving the game of peg solitaire with a Reinforcement Learning (RL) Algorithm. 
 
-An adapted version of Asynchronous Advantage Actor Critic ([A3C](https://arxiv.org/pdf/1602.01783.pdf)) is used implemented from scratch to train an RL agent to solve the game of peg solitaire. The game consists of 32 marbles (or pegs) set out in a cross shape. There are 33 positions in the cross-shaped board, and the initial position of the game contains all 32 marbles but one is missing in the center position of the cross. The goal is to remove the marbles one by one until there is only one left. To remove a marble, another marble has to move to an empty space and pass over the marble to remove. 
+This project applies an adapted version of Asynchronous Advantage Actor-Critic ([A3C](https://arxiv.org/pdf/1602.01783.pdf)), implemented from scratch, to train an RL agent to solve the **peg solitaire** game. The game consists of **32 marbles (pegs)** arranged in a cross shape on a **33-position** board, with the center position initially left empty. The objective is to remove marbles one by one until only one remains. A marble is removed when another marble jumps over it into an empty space.
 
-See the gif demo below to better understand the game : 
+The following GIF illustrates how the game is played:
 
 <p align="center">
 <img src="/images/solitaire_1.gif" width="400" height="400" />
 </p>
 
-It is fairly easy to leave between 2 and 5 marbles at the end of the game, but much more difficult to leave only 1. This is why this game is difficult for a reinforcement learning algorithm, since it can easily learn to get high rewards by leaving only a few marbles, but it has to leave even less than 2 marbles to solve the game. 
-
-# Files Description 
-
-- The folder *env* contains three files : *env.py*, *rendering.py* and *border_constraints.py*. The first file contains the implementation of the soliatire environment as a Python Class <b>Env</b> and the basic functions (init, step, reset, etc) that will be used to interact with it. It also contains a function (render) to visualize the environment. The file *border_constraints.py* contains a function to compute the actions which would yield a marble out of the borders of the board. 
-
-- The file *agent.py* contains the implementation of different classes of agents. The basic core class and its methods are described first, then the classes <b>RandomAgent</b> and <b>ActorCriticAgent</b> are implemented using the base methods from the parent class <b>Agent</b>. The actor-critic agent implements A3C and consists of a neural network implemented in the file *network.py* found in the folder *network*.
-
-- The folder *network* contains two python files *network.py* and *build.py*. The former contains a Python Class <b>Net</b> implementing a neural network in TensorFlow with a shared representation of the state which then splits into two heads: the policy head and the value head. The latter file contains the functions to build the different blocks of the network. 
-
-- The file *buffer.py* contains a small Python Class implementing a buffer structure. This buffer will be used as a memory replay buffer during the training of the agent. The buffer has a fixed capacity, and once it is reached, each time new data are added, the oldest data removed.
-
-- The file *util.py* contains utility functions to handle files and directories and other such handy functions.
-
-- The file *config.yaml* contains the configuration parameters (directory names, hyperparameters of the network, number of workers, etc) for training the agent.
-
-- The file *main.py* contains the main file for training the agent. The config file is read and then the training of the agent can start with the parameters found in the configuration file.
+It is relatively easy to end the game with 2–5 marbles remaining, but achieving a single remaining marble is significantly more difficult. This makes peg solitaire challenging for reinforcement learning since the agent may learn to maximize rewards by reaching a near-complete solution but must reach exactly one remaining marble to fully solve the game.
 
 
-# Description of the Method
+# Method Overview
 
-A slightly adapted version of A3C is employed, in which a certain number of games (here 16) are played simultaneously using the same agent (i.e. the same policy network). The data from those games are collected and stored in a memory buffer as a list of dictionnaries whose keys are <b>state</b>, <b>advantage</b>, <b>action selected</b>, and <b>critic target</b>. After every 4 moves played by the agents, data are sampled from the buffer and used to update the policy-value network of the agent using mini-batch gradient descent (using a batch size of 64, and the Adam optimizer). One iteration of training consists of playing out until the end the 16 games simultaneously and updating the network every time all of the 16 agents have taken 4 moves. At the end of each iteration, the network weights are saved, and an evaluation phase starts where the results of 30 games (played simultaneously with the latest update of the network) are collected and stored in a results file for later analysis. 
+A modified version of A3C is used, where 16 games run simultaneously, sharing the same agent (policy network). Game data is stored in a memory buffer containing:
 
-The network design has been kept simple, although a more complex architecture would have yielded a faster learning. The input to the network is the state of the environment represented by a 7x7x3 cube, i.e. a 7x7 image with 3 channels (I have used the NHWC covention for TensorFlow tensors). The first channel contains integers 1 and 0 to indicate presence or abscence of a marble at each position. The positions outside the cross-shaped board are automatically filled with zeros. The two other channels contain each a single value broadcasted to the whole channel matrix. The first of those channels contains the percentage of marbles that have been removed so far, and the last contains the percentage of marbles left to remove in order to solve the game. 
+- State representation
+- Advantage estimate
+- Selected action
+- Critic target (value function update)
 
-The policy-value network first processes that input using three 2d-convolutions. Then, this state representation is processed separately by the value head and the policy head. The value head consists of a 1x1 convolution  with stride 1, followed by a dense layer and then the output layer. The policy head consists of a 1x1 convolution with stride 1 followed by a dense layer giving the logits of a softmax distribution. 
+Every 4 moves, sampled data is used to update the policy-value network using mini-batch gradient descent (batch size: 64, optimizer: Adam). A training iteration consists of: 
 
-At each state of a game, we store the cube representation of the state. The critic target for this state is computed using the rewards cumulated during the 4 moves in which this state was observed as well as the value network for bootstrapping. The value network is used both to evaluate the value of the last state reached after the 4 moves and thus to obtain the critic target values, but also to evaluate each of the 4 states encountered, whose values will serve as baseline when computing the advantage for each of these for states. The action selected by the agent is also stored in order to train the actor (policy network). 
+1. Running all 16 games to completion
+2. Updating the network after every 4 moves by all 16 agents
+3. Saving the updated model and running 30 evaluation games 
 
-# Training and results
+# Neural Network Architecture 
 
-With the configuration parameters as presented in the config file, training took 53 minutes on one CPU to complete the 800 iterations. At the end of training, the agent is able to solve the puzzle almost every time when sampling from the policy, and solves the puzzle every time when using a greedy policy, i.e. selecting at each move the most probable action from the policy. From the 700th training iteration, the agent solved the puzzle 99% of the time during evaluation. It thus takes a little more than 11 000 games for the agent to figure out how to solve the puzzle ! This corresponds to roughly 50 000 network updates. Below are depicted the curves (mean and standard deviation) of the cumulative reward (left) and number of marbles left (right) in the evaluation games as a function of the number of iterations. 
+The state representation is encoded as a 7×7×3 input tensor: 
+
+- Channel 1: Binary values indicating marble presence (1) or absence (0)
+- Channel 2: Percentage of marbles removed so far
+- Channel 3: Percentage of marbles left to remove
+
+The policy-value network consists of: 
+
+1. Three 2D convolutional layers for state encoding
+2. Two separate network heads:
+   - Value head: 1×1 convolution → Dense layer → Output layer
+   - Policy head: 1×1 convolution → Dense layer → Softmax logits
+
+At each game state, the network computes: 
+
+- Critic target using cumulative rewards and bootstrapping from future values
+- Advantage estimates for policy updates
+- Selected action storage for actor training
+
+# Training and Results 
+With the given configuration, training took 53 minutes on a single CPU for 800 iterations. By iteration 700, the agent solved the puzzle 99% of the time during evaluation. The agent: 
+
+- Reliably solves the puzzle when sampling from the policy
+- Always finds a solution when using a greedy strategy (choosing the most probable move at each step)
+- Learns to solve the game after ~11,000 training games (~50,000 network updates)
+
+Below are plots showing training performance:
 
 <p align="center">
   <img src="/images/rewards_1.jpeg" width="440" height="350" title="Reward as a function of the number of iterations" />
@@ -56,9 +71,15 @@ With the configuration parameters as presented in the config file, training took
 </p>
 
 
-Finally, the gif below shows the agent solving the puzzle. The solution is produced using the latest version of the network and using a greedy policy (most probable move is selected at each step) : 
+# Final Solution Demonstration 
+
+The following GIF showcases the trained agent solving the puzzle using a greedy policy (always selecting the most probable move):
 
 
 <p align="center">
 <img src="/images/solitaire_opt_trim_1.gif" width="400" height="400" />
 </p>
+
+# Improvements & Future Work 
+
+Although a simple network architecture was used, a more complex design could improve learning speed. Additional enhancements, such as curriculum learning or reward shaping, could further improve agent performance.
