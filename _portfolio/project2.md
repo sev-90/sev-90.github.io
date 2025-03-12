@@ -14,7 +14,7 @@ An adapted version of Asynchronous Advantage Actor Critic ([A3C](https://arxiv.o
 See the gif demo below to better understand the game : 
 
 <p align="center">
-<img src="./solitaire_1.gif" width="400" height="400" />
+<img src="solitaire_1.gif" width="400" height="400" />
 </p>
 
 It is fairly easy to leave between 2 and 5 marbles at the end of the game, but much more difficult to leave only 1. This is why this game is difficult for a reinforcement learning algorithm, since it can easily learn to get high rewards by leaving only a few marbles, but it has to leave even less than 2 marbles to solve the game. 
@@ -60,5 +60,5 @@ Finally, the gif below shows the agent solving the puzzle. The solution is produ
 
 
 <p align="center">
-<img src="_portfolio/solitaire_opt_trim_1.gif" width="400" height="400" />
+<img src="solitaire_opt_trim_1.gif" width="400" height="400" />
 </p>
