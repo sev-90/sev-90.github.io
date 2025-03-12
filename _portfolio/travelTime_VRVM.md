@@ -28,7 +28,7 @@ The housing data set contains 506 examples for median housing prices with 13 fea
 
 
 ## Travel time predictions and predictive uncertainty
-Then, trained $\mathcal{M}=20$ VRVM models are utilized to construct the predictive ensemble model. The predictive ensemble distribution is the mixture of predictive distributions of the trained models \eqref{ensemble1}. To evalute the performance of the trained models and the final ensemble model, two different metrics are deployed, the **root-mean-square error (RMSE)** and **mean absolute percentage error (MAPE)**.
+Then, trained $\mathcal{M}=20$ VRVM models are utilized to construct the predictive ensemble model. The predictive ensemble distribution is the mixture of predictive distributions of the trained models. To evalute the performance of the trained models and the final ensemble model, two different metrics are deployed, the **root-mean-square error (RMSE)** and **mean absolute percentage error (MAPE)**.
 Results present the predictions on unseen test data set (size of ~1.2k) for trip travel times +/- one predicted standard deviation, which represents the epistemic uncertainty automatically predicted in the adopted Bayesian learning framework. Below also is the errors histograms where error is defined as $(error = y_{predict}-y_{true})$. To evaluate the overall generalization performance of the model, we tested the trained ensemble model on five different unseen data sets. The average RMSE score was 147.24s with a standard deviation of 10.31s, while the average MAPE score was 0.45 with a standard deviation of 0.016. Overall, the scores imply a satisfactory performance specifically for most trips with medium travel time length.
 In contrast, for very short trips and very long trips, the model's performance degrades. It can be observed that for the relatively short trips, the model overestimates the travel times, and this is perhaps due to averaging effect that arises from utilizing constant width parameter in Gaussian kernel functions. While, for the long trips, the discrepancy might be due to either something unusual along the journey or the lack of enough long trip data.  
 
@@ -86,7 +86,7 @@ $$
 p(y'|x';y,X) = \int{p(y'|x',w,\lambda)p(w|y,X,\lambda)p(\lambda|y,X)}dwd\lambda
 $$
 
-If we show the model parameters with $\theta=\{ \lambda, w \}$, using the Bayes rule, the model posteriors $p(\theta|y)$, can be calculated as
+If we show the model parameters with $\theta=\{ \lambda, w \}$, using the Bayes rule, the model posteriors $p(\theta\|y)$, can be calculated as
 
 $$
 p(\theta|y) = \frac{p(y|\theta)p(\theta)}{p(y)}\\
@@ -97,7 +97,7 @@ With our model specification, calculating the marginal probability of observed d
 
 $$
 p(\theta|y) = q(\theta)\\
-q^*(\theta) = \underset{q(\theta)\in \mathcal{Q}}{\argmin} \text{ KL}q(\theta) || p(\theta|y)
+q^*(\theta) = \underset{q(\theta)\in \mathcal{Q}}{\arg\min} \text{ KL}q(\theta) || p(\theta|y)
 $$
 
 The distance between approximated and exact posteriors of parameters is quantified using Kullback-Leibler (KL) divergence measure defined by
@@ -109,10 +109,11 @@ $$
 The following section shows how to solve this optimization objective function.
 ## Variational Inference
 It is not easy in many complex statistical models with a Bayesian setting, or sometimes it is impossible to derive an exact analytical expression for the inference. Monte Carlo sampling techniques are the alternatives for estimating distributions for such intractable analytical solutions. While in such models with many parameters or in a large data set, using Monte Carlo sampling techniques are computationally expensive. Variational inference is another alternative that poses an assumption on the family of posteriors and then uses optimization to find the optimal member of the family. Therefore, variation inference gives exact closed-form expression for the approximated inference. Even though VI is often faster when dealing with large data sets or complex models, in contrast to the sampling techniques that are often unbiased and produced samples from the target distribution, it is not guaranteed that the target posterior distribution is in the same family as assumed posterior family $\mathcal{Q}$.
-\subsubsection{Variational Inference Objective Function}
-In equation \ref{KL}, the KL divergence calculation requires the calculation of evidence part $p(y)$, which is hard to obtain in our case. In such cases, instead of minimizing the whole equation, the optimization objective can be held by maximizing the negative of the two first terms, also called evidence lower bound (ELBO). Thereby, maximizing ELBO equivalently minimizes the KL divergence measure (for more detail, see \cite{blei2017variational}).
 
-In our modeling context, approximating the joint posteriorof parameters as $p(w,\lambda, \alpha_1,...,\alpha_m|y,X)$ with $q(w,\lambda, \alpha_1,\dots,\alpha_m)$, the ELBO objective function which we represent by $\mathcal{L}$  can be presented by 
+### Variational Inference Objective Function
+The KL divergence calculation requires the calculation of evidence part $p(y)$, which is hard to obtain in our case. In such cases, instead of minimizing the whole equation, the optimization objective can be held by maximizing the negative of the two first terms, also called evidence lower bound (ELBO). Thereby, maximizing ELBO equivalently minimizes the KL divergence measure (for more detail, see [5]).
+
+In our modeling context, approximating the joint posteriorof parameters as $p(w,\lambda, \alpha_1,...,\alpha_m\|y,X)$ with $q(w,\lambda, \alpha_1,\dots,\alpha_m)$, the ELBO objective function which we represent by $\mathcal{L}$  can be presented by 
 
 $$
 \mathcal{L} = \mathbb{E}_q[\ln p(y,w,\lambda, \alpha_1,...,\alpha_m|X)] -\mathbb{E}_q[\ln q(w,\lambda, \alpha_1,...,\alpha_m)]
@@ -127,13 +128,13 @@ $$
 Next, we utilize the variational inference technique to derive a closed-form expression for each approximate posterior of model parameters.
 
 ## Approximate Inferences
-To find the optimal approximate posterior distribution say $q^*(\theta_j)$, the procedure is the exponentiation of the expected log of the joint probability of observed data and parameters taken over all parameters except the parameter $j$, i.e., $q(\theta_{-j})$ as shown in \eqref{var_infer} (the details of derivation can be found in [2]:
+To find the optimal approximate posterior distribution say $q^*(\theta_j)$, the procedure is the exponentiation of the expected log of the joint probability of observed data and parameters taken over all parameters except the parameter $j$, i.e., $q(\theta_{-j})$ (the details of derivation can be found in [2]:
 
 $$
 q^*(\theta_j) \propto \exp\{\mathbb{E}_{-j}[\ln p(y, w, \lambda, \alpha_1,...,\alpha_m|x)]\} 
 $$
 
-Following the rule presented at \eqref{var_infer}, the optimal variational posterior of model parameters are derived analytically since the conjugate priors (Gamma distributions) to the Gaussian model are adopted. The approximated inferences are presented in \eqref{posteriors}.
+The optimal variational posterior of model parameters are derived analytically since the conjugate priors (Gamma distributions) to the Gaussian model are adopted. The approximated inferences are presented below.
  
 $$
 q(\lambda) \propto \text{Gamma}(e',f'),\\
@@ -142,7 +143,7 @@ q(\alpha_k) \propto \text{Gamma}(a'_k,b'_k), k\in{1,...m}\\
 $$
 
 
-where the distributions parameters are described in \eqref{parameters}:
+where the distributions parameters are described as:
 
 
 $$
@@ -175,7 +176,7 @@ $$
 $$
 
 ## Approximated Posterior Predictive Distribution
-And, the posterior predictive distribution can be approximated as \eqref{post_pred_dis}:
+And, the posterior predictive distribution can be approximated as follows:
 
 $$
 p(\hat{y}|y) = \int p(\hat{y}|\phi(\hat{x}_i),w,\lambda)q(w,\lambda)d\lambda dw.\\
@@ -196,7 +197,7 @@ $$
 where the variance parameter of the distribution quantifies the aleotric and epistemic uncertainties in the predicted travel times.
 
 \subsection{Ensemble Prediction}
-The CAVI optimization algorithm becomes expensive for large data sets in the variational relevance vector machine. The computation scale of the VRVM algorithm is $\mathcal{O}(N^3)$, and this is due to the existence of the covariance matrix inverse operation in computing weights posterior distributions. Hence, this method is not scalable for larger data sets unless an appropriate training process is adopted. One way to make use of this approach for large data sets is to take advantage of the ARD property of the method, such that iteratively adding new basis functions and pruning non-relevance ones. To prune insignificant basis functions, either a weight threshold or a threshold for hyperparameter of $\alpha$ can be used. Another way to make this approach practical is to train different ensembles of the VRVM model in parallel with different samples of data and then average predictions. To do so, the ensemble prediction can be treated as uniformly weighted mixture model of the predictive distributions defined as \cite{lakshminarayanan2016simple},
+The CAVI optimization algorithm becomes expensive for large data sets in the variational relevance vector machine. The computation scale of the VRVM algorithm is $\mathcal{O}(N^3)$, and this is due to the existence of the covariance matrix inverse operation in computing weights posterior distributions. Hence, this method is not scalable for larger data sets unless an appropriate training process is adopted. One way to make use of this approach for large data sets is to take advantage of the ARD property of the method, such that iteratively adding new basis functions and pruning non-relevance ones. To prune insignificant basis functions, either a weight threshold or a threshold for hyperparameter of $\alpha$ can be used. Another way to make this approach practical is to train different ensembles of the VRVM model in parallel with different samples of data and then average predictions. To do so, the ensemble prediction can be treated as uniformly weighted mixture model of the predictive distributions defined as [6],
 
 $$
 p(\hat{y}|\hat{x}, \mathcal{D})  \propto \frac{1}{\mathcal{M}} \sum_{\mathfrak{m}=1}^\mathcal{M} p_{\mu_\mathfrak{m},\sigma^2_\mathfrak{m}}(\hat{y}|\hat{x}, \mathcal{D}_\mathfrak{m})
@@ -232,5 +233,7 @@ References:
 [2] cite{bishop2013variational}
 [3] cite{smola2004tutorial}
 [4] cite{ueda2002bayesian}
+[5] cite{blei2017variational}
+[6] cite{lakshminarayanan2016simple}
 
 
