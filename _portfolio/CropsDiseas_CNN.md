@@ -1,10 +1,10 @@
 ---
-title: "Project #1: Crops disease type prediction with Convolutional neural network (CNN)"
+title: "Project #1: Crops disease type prediction with Convolutional Neural Network (CNN)"
 excerpt: "This project stemmed from my participation in the [ICLR Workshop Challenge CGIAR: Computer Vision for Crop Disease](https://zindi.africa/competitions/iclr-workshop-challenge-1-cgiar-computer-vision-for-crop-disease/data) in 2020."
 collection: portfolio
 ---
 
-Project \#1: Crops disease type prediction with Convolutional neural network (CNN)
+Project \#1: Crops disease type prediction with Convolutional Neural Network (CNN)
 
 This project stemmed from my participation in the [ICLR Workshop Challenge CGIAR: Computer Vision for Crop Disease](https://zindi.africa/competitions/iclr-workshop-challenge-1-cgiar-computer-vision-for-crop-disease/data) in 2020. Its repostory can be accesses [here](https://github.com/sev-90/competition1-crops-disease). 
 
