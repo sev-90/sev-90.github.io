@@ -228,18 +228,18 @@ $$
 
 
 
-References:
+References
 
-[1] Tipping, Michael E. "Sparse Bayesian learning and the relevance vector machine." Journal of machine learning research 1.Jun (2001): 211-244.
+1. Tipping, Michael E. "Sparse Bayesian learning and the relevance vector machine." Journal of machine learning research 1.Jun (2001): 211-244.
 
-[2] Bishop, Christopher M., and Michael Tipping. "Variational relevance vector machines." arXiv preprint arXiv:1301.3838 (2013).
+2. Bishop, Christopher M., and Michael Tipping. "Variational relevance vector machines." arXiv preprint arXiv:1301.3838 (2013).
 
-[3] Smola, Alex J., and Bernhard Schölkopf. "A tutorial on support vector regression." Statistics and computing 14 (2004): 199-222.
+3. Smola, Alex J., and Bernhard Schölkopf. "A tutorial on support vector regression." Statistics and computing 14 (2004): 199-222.
 
-[4] Ueda, Naonori, and Zoubin Ghahramani. "Bayesian model search for mixture models based on optimizing variational bounds." Neural Networks 15.10 (2002): 1223-1241.
+4. Ueda, Naonori, and Zoubin Ghahramani. "Bayesian model search for mixture models based on optimizing variational bounds." Neural Networks 15.10 (2002): 1223-1241.
 
-[5] Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "Variational inference: A review for statisticians." Journal of the American statistical Association 112.518 (2017): 859-877.
+5. Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "Variational inference: A review for statisticians." Journal of the American statistical Association 112.518 (2017): 859-877.
 
-[6] Lakshminarayanan, Balaji, Alexander Pritzel, and Charles Blundell. "Simple and scalable predictive uncertainty estimation using deep ensembles." Advances in neural information processing systems 30 (2017).
+6. Lakshminarayanan, Balaji, Alexander Pritzel, and Charles Blundell. "Simple and scalable predictive uncertainty estimation using deep ensembles." Advances in neural information processing systems 30 (2017).
 
 
