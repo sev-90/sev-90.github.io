@@ -1,13 +1,12 @@
 ---
 title: "Project #2: Solving the game of peg solitaire with a Reinforcement Learning"
-excerpt: ""
+excerpt: "This project was completed as part of my Deep Learning course's final group project."
 collection: portfolio
 ---
 
 
 
 # RL-solitaire
-Solving the game of peg solitaire with a Reinforcement Learning (RL) Algorithm. 
 
 This project applies an adapted version of Asynchronous Advantage Actor-Critic ([A3C](https://arxiv.org/pdf/1602.01783.pdf)), implemented from scratch, to train an RL agent to solve the **peg solitaire** game. The game consists of **32 marbles (pegs)** arranged in a cross shape on a **33-position** board, with the center position initially left empty. The objective is to remove marbles one by one until only one remains. A marble is removed when another marble jumps over it into an empty space.
 
