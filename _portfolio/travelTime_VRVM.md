@@ -7,7 +7,7 @@ collection: portfolio
 # variational sparse Bayesian_learning
 variational sparse Bayesian learning (relevance vector machine)
 # Abstract
-Accurate predictions of the route travel times and quantifying the reliability of the predictions are crucial in optimizing the service delivery transport in a city. This paper aims to predict the travel time distributions between any arbitrary locations in an urban network by training a probabilistic machine learning algorithm using historical trip data. In this project, **variational relevance vector machines (VRVM)** method and ensemble learning to **probabilistically** predict the trip travel time for any origin-destination pair at different times of day through learning the similarities between the previously observed travel times across the city road network. The similarities between the observed route travel times are quantified with multi-kernel function. Moreover, the VRVM method allows us to efficiently use historical data through sparse Bayesian learning that identifies the **``relevance'' basis functions from the entire data.  
+Accurate predictions of the route travel times and quantifying the reliability of the predictions are crucial in optimizing the service delivery transport in a city. This paper aims to predict the travel time distributions between any arbitrary locations in an urban network by training a probabilistic machine learning algorithm using historical trip data. In this project, **variational relevance vector machines (VRVM)** method and **ensemble learning** to **probabilistically** predict the trip travel time for any origin-destination pair at different times of day through learning the similarities between the previously observed travel times across the city road network. The similarities between the observed route travel times are quantified with multi-kernel function. Moreover, the VRVM method allows us to efficiently use historical data through sparse Bayesian learning that identifies the **``relevance'' basis functions from the entire data.  
 
 In the following, some results relating to model verification and trip travel time are presented. Then, modeling details, including the algorithm and the mathematics behind the model, can be found in the following sections.
 ## Model Verification
@@ -28,7 +28,7 @@ The housing data set contains 506 examples for median housing prices with 13 fea
 
 
 ## Travel time predictions and predictive uncertainty
-Then, trained $\mathcal{M}=20$ VRVM models are utilized to construct the predictive ensemble model. The predictive ensemble distribution is the mixture of predictive distributions of the trained models. To evalute the performance of the trained models and the final ensemble model, two different metrics are deployed, the **root-mean-square error (RMSE)** and **mean absolute percentage error (MAPE)**.
+Then, trained $\mathcal{M}=20$ VRVM models are utilized to construct the predictive ensemble model. The **predictive ensemble distribution** is the mixture of predictive distributions of the trained models. To evalute the performance of the trained models and the final ensemble model, two different metrics are deployed, the **root-mean-square error (RMSE)** and **mean absolute percentage error (MAPE)**.
 Results present the predictions on unseen test data set (size of ~1.2k) for trip travel times +/- one predicted standard deviation, which represents the epistemic uncertainty automatically predicted in the adopted Bayesian learning framework. Below also is the errors histograms where error is defined as $(error = y_{predict}-y_{true})$. To evaluate the overall generalization performance of the model, we tested the trained ensemble model on five different unseen data sets. The average RMSE score was 147.24s with a standard deviation of 10.31s, while the average MAPE score was 0.45 with a standard deviation of 0.016. Overall, the scores imply a satisfactory performance specifically for most trips with medium travel time length.
 In contrast, for very short trips and very long trips, the model's performance degrades. It can be observed that for the relatively short trips, the model overestimates the travel times, and this is perhaps due to averaging effect that arises from utilizing constant width parameter in Gaussian kernel functions. While, for the long trips, the discrepancy might be due to either something unusual along the journey or the lack of enough long trip data.  
 
@@ -196,7 +196,7 @@ $$
 
 where the variance parameter of the distribution quantifies the aleotric and epistemic uncertainties in the predicted travel times.
 
-\subsection{Ensemble Prediction}
+## Ensemble Prediction
 The CAVI optimization algorithm becomes expensive for large data sets in the variational relevance vector machine. The computation scale of the VRVM algorithm is $\mathcal{O}(N^3)$, and this is due to the existence of the covariance matrix inverse operation in computing weights posterior distributions. Hence, this method is not scalable for larger data sets unless an appropriate training process is adopted. One way to make use of this approach for large data sets is to take advantage of the ARD property of the method, such that iteratively adding new basis functions and pruning non-relevance ones. To prune insignificant basis functions, either a weight threshold or a threshold for hyperparameter of $\alpha$ can be used. Another way to make this approach practical is to train different ensembles of the VRVM model in parallel with different samples of data and then average predictions. To do so, the ensemble prediction can be treated as uniformly weighted mixture model of the predictive distributions defined as [6],
 
 $$
@@ -229,11 +229,17 @@ $$
 
 
 References:
-[1] cite{tipping2001sparse}
-[2] cite{bishop2013variational}
-[3] cite{smola2004tutorial}
-[4] cite{ueda2002bayesian}
-[5] cite{blei2017variational}
-[6] cite{lakshminarayanan2016simple}
+
+[1] Tipping, Michael E. "Sparse Bayesian learning and the relevance vector machine." Journal of machine learning research 1.Jun (2001): 211-244.
+
+[2] Bishop, Christopher M., and Michael Tipping. "Variational relevance vector machines." arXiv preprint arXiv:1301.3838 (2013).
+
+[3] Smola, Alex J., and Bernhard Schölkopf. "A tutorial on support vector regression." Statistics and computing 14 (2004): 199-222.
+
+[4] Ueda, Naonori, and Zoubin Ghahramani. "Bayesian model search for mixture models based on optimizing variational bounds." Neural Networks 15.10 (2002): 1223-1241.
+
+[5] Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "Variational inference: A review for statisticians." Journal of the American statistical Association 112.518 (2017): 859-877.
+
+[6] Lakshminarayanan, Balaji, Alexander Pritzel, and Charles Blundell. "Simple and scalable predictive uncertainty estimation using deep ensembles." Advances in neural information processing systems 30 (2017).
 
 
