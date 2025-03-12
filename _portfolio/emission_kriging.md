@@ -48,7 +48,7 @@ In this project, **semivariograms** are calculated to assess the **spatial corre
 
 $$ \lambda(h) = \frac{1}{2}E[(z(s_i) - z(s_i+h))^2]$$
 
-where $z(s_i)$ is the value of a spatial random variable $s_i$ and $z(s_i + h)$ is the value of the neighbor random variable $s_i + h$ with $h$ as the distance between two points.
+where \( z(s_i) \) is the value of a spatial random variable $s_i$ and $z(s_i + h)$ is the value of the neighbor random variable $s_i + h$ with $h$ as the distance between two points.
 Herein, the sample semivariances are calculated and shown by the variogram plot below. Then, the **exponential Variogram** has been fitted to the the semivariances.  
 ![image](https://github.com/user-attachments/assets/079df675-0f39-4661-bbd9-f6d52c7e454e)
 
