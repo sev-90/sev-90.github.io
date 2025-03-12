@@ -52,7 +52,7 @@ With the configuration parameters as presented in the config file, training took
 
 <p align="center">
   <img src="RL-solitaire/rewards_1.jpeg" width="440" height="350" title="Reward as a function of the number of iterations" />
-  <img src="[RL-solitaire/pegs_left_1.jpeg](https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/pegs_left_1.jpeg)" width="440" height="350" title="Number of marbles left as a function of the number of iterations" />
+  <img src=[RL-solitaire/pegs_left_1.jpeg](https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/pegs_left_1.jpeg) width="440" height="350" title="Number of marbles left as a function of the number of iterations" />
 </p>
 
 Finally, the gif below shows the agent solving the puzzle. The solution is produced using the latest version of the network and using a greedy policy (most probable move is selected at each step) : 
