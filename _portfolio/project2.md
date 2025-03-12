@@ -60,5 +60,5 @@ Finally, the gif below shows the agent solving the puzzle. The solution is produ
 
 
 <p align="center">
-<img src="solitaire_opt_trim_1.gif" width="400" height="400" />
+<img src="_portfolio/solitaire_opt_trim_1.gif" width="400" height="400" />
 </p>
