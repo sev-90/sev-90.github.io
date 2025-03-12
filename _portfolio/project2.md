@@ -51,8 +51,8 @@ At each state of a game, we store the cube representation of the state. The crit
 With the configuration parameters as presented in the config file, training took 53 minutes on one CPU to complete the 800 iterations. At the end of training, the agent is able to solve the puzzle almost every time when sampling from the policy, and solves the puzzle every time when using a greedy policy, i.e. selecting at each move the most probable action from the policy. From the 700th training iteration, the agent solved the puzzle 99% of the time during evaluation. It thus takes a little more than 11 000 games for the agent to figure out how to solve the puzzle ! This corresponds to roughly 50 000 network updates. Below are depicted the curves (mean and standard deviation) of the cumulative reward (left) and number of marbles left (right) in the evaluation games as a function of the number of iterations. 
 
 <p align="center">
-  <img src="rewards_1.jpeg" width="440" height="350" title="Reward as a function of the number of iterations" />
-  <img src="pegs_left_1.jpeg" width="440" height="350" title="Number of marbles left as a function of the number of iterations" />
+  <img src="/images/rewards_1.jpeg" width="440" height="350" title="Reward as a function of the number of iterations" />
+  <img src="/images/pegs_left_1.jpeg" width="440" height="350" title="Number of marbles left as a function of the number of iterations" />
 </p>
 
 
@@ -60,5 +60,5 @@ Finally, the gif below shows the agent solving the puzzle. The solution is produ
 
 
 <p align="center">
-<img src="_portfolio/solitaire_opt_trim_1.gif" width="400" height="400" />
+<img src="/images/solitaire_opt_trim_1.gif" width="400" height="400" />
 </p>
