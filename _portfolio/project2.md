@@ -14,7 +14,7 @@ An adapted version of Asynchronous Advantage Actor Critic ([A3C](https://arxiv.o
 See the gif demo below to better understand the game : 
 
 <p align="center">
-<img src="https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/solitaire_1.gif" width="400" height="400" />
+<img src="solitaire_1.gif" width="400" height="400" />
 </p>
 
 It is fairly easy to leave between 2 and 5 marbles at the end of the game, but much more difficult to leave only 1. This is why this game is difficult for a reinforcement learning algorithm, since it can easily learn to get high rewards by leaving only a few marbles, but it has to leave even less than 2 marbles to solve the game. 
@@ -51,8 +51,8 @@ At each state of a game, we store the cube representation of the state. The crit
 With the configuration parameters as presented in the config file, training took 53 minutes on one CPU to complete the 800 iterations. At the end of training, the agent is able to solve the puzzle almost every time when sampling from the policy, and solves the puzzle every time when using a greedy policy, i.e. selecting at each move the most probable action from the policy. From the 700th training iteration, the agent solved the puzzle 99% of the time during evaluation. It thus takes a little more than 11 000 games for the agent to figure out how to solve the puzzle ! This corresponds to roughly 50 000 network updates. Below are depicted the curves (mean and standard deviation) of the cumulative reward (left) and number of marbles left (right) in the evaluation games as a function of the number of iterations. 
 
 <p align="center">
-  <img src="https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/rewards_1.jpeg" width="440" height="350" title="Reward as a function of the number of iterations" />
-  <img src="https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/pegs_left_1.jpeg" width="440" height="350" title="Number of marbles left as a function of the number of iterations" />
+  <img src="rewards_1.jpeg" width="440" height="350" title="Reward as a function of the number of iterations" />
+  <img src="pegs_left_1.jpeg" width="440" height="350" title="Number of marbles left as a function of the number of iterations" />
 </p>
 
 
@@ -60,5 +60,5 @@ Finally, the gif below shows the agent solving the puzzle. The solution is produ
 
 
 <p align="center">
-<img src="https://github.com/sev-90/RL-PegSolitaire/blob/970de71e95a183171de7eda2e5c46dba1134a98f/RL-solitaire/solitaire_opt_trim_1.gif" width="400" height="400" />
+<img src="solitaire_opt_trim_1.gif" width="400" height="400" />
 </p>
