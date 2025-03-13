@@ -6,5 +6,5 @@ collection: portfolio
 
 
 <p align="center">
-<img src="/images/video_algoclosest_numAmb10_incInt60_simDur1440_seed10_epi1.mp4" width="400" height="400" />
+<img src="/images/ems.gif" width="400" height="400" />
 </p>
