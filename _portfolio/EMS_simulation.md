@@ -12,7 +12,7 @@ In order to validate the effectiveness of the proposed penalty metric in guiding
 In the discrete event simulation model, an incident generator simulates the generation of emergency calls across various locations using a Poisson distribution, with the rate of incidents varying spatially. Such spatial variation can arise from factors like non-uniform population densities, demographic distributions, or or disparities in urban infrastructure across different areas. 
 
 <p align="center">
-<img src="/images/DES_time.png" width="400" height="400" />
+<img src="/images/DES_time.png" width="600" height="600" />
 </p>
 
 <p align="center">
