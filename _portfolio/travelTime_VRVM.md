@@ -15,6 +15,7 @@ Before training the VRVM model using travel time data sets, the implemented VRVM
 1. **$Sinc$ function**, and
 2. **Boston housing** data sets,
 and compare the results with repoted results in literature review.
+
 ## Sinc function
 Using the suggested synthetic data generation in [1], we evaluate the performance of the VRVM model through three different trials. The **Gaussian kernel** is used for training the VRVM models. For each trial, we generate 100 noisy target values, $y$, at 100 linearly selected $x$ from $x \in [-10,10]$ using the function $Sinc(x)=sin(x)/x$ with **Gaussian additive noise** with standard deviations of 0.1, 0.2, and 0.3, respectively. The noise estimate and the root-mean-square (RMS) deviation from the true function evaluated at 1000 linearly spaced test samples in $[-10,10]$ averaged over 100 random instantiations of the noise are presented at table 1. The reported RMS deviation from the true function for Gaussian additive noise 0.1 is 0.038 [2].
 
