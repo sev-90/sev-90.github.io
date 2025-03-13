@@ -1,11 +1,11 @@
 ---
 title: "Variational Sparse Bayesian learning with Relevance Vector Machine"
-excerpt: "This project predicts route travel times and quantifies the uncertainty of the predictions."
+excerpt: "Probabilistic prediction with VRVM from Boston housing price to route travel time. "
 collection: portfolio
 ---
 
 # Variational sparse Bayesian learning
-Variational sparse Bayesian learning with Relevance Vector Machine (VRM)
+Variational sparse Bayesian learning with Relevance Vector Machine (VRVM)
 # Abstract
 Accurate predictions of the route travel times and quantifying the reliability of the predictions are crucial in optimizing the service delivery transport in a city. This paper aims to predict the travel time distributions between any arbitrary locations in an urban network by training a probabilistic machine learning algorithm using historical trip data. In this project, **variational relevance vector machines (VRVM)** method and **ensemble learning** to **probabilistically** predict the trip travel time for any origin-destination pair at different times of day through learning the similarities between the previously observed travel times across the city road network. The similarities between the observed route travel times are quantified with multi-kernel function. Moreover, the VRVM method allows us to efficiently use historical data through sparse Bayesian learning that identifies the **``relevance'' basis functions from the entire data.  
 
