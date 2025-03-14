@@ -21,11 +21,16 @@ Using the suggested synthetic data generation in [1], we evaluate the performanc
 
 ![image](https://github.com/user-attachments/assets/416136e3-f0cb-4cfa-8945-ff24cc66606d)
 
+<p align="center">
+<img src="/images/sinc.png" width="400" height="400" />
+</p>
 
 ## Boston housing data
 The housing data set contains 506 examples for median housing prices with 13 feature variables. We train the VRVM model using Gaussian kernel and based on housing data to predict housing prices. The averaged results for 10 randomly partitioned Boston Housing data into 481 training, and 25 test data sets are presented in table 1. The estimated noise and the mean squared error are 2.42 and 9.84, respectively, whereas the corresponding values reported at [2] are 2.49 and 10.36 ([2] utilized third order polynomial kernel), and the slight difference might be due to random data partition and different kernel type used.
  
-![image](https://github.com/user-attachments/assets/2d5afd12-35d3-4044-8135-155a0344eda5)
+<p align="center">
+<img src="/images/BHP.png" width="400" height="400" />
+</p>
 
 
 ## Travel time predictions and predictive uncertainty
