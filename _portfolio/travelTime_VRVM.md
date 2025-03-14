@@ -1,5 +1,5 @@
 ---
-title: "Variational Sparse Bayesian learning with Relevance Vector Machine"
+title: "#1: Variational Sparse Bayesian learning with Relevance Vector Machine"
 excerpt: "Probabilistic prediction with VRVM from Boston housing price to route travel time. "
 collection: portfolio
 ---
