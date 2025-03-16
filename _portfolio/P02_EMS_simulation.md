@@ -8,7 +8,8 @@ Developed a Discrete Event Simulation (DES) in Python to model emergency respons
 
 Built using SimPy for simulation, Pygame for visualization, and NetworkX for network modeling. The repository will be open-sourced soon.
 
-Abstract
+# Abstract
+
 The dispatching process for emergency medical services (EMS) is inherently sequential and dynamic, with each decision impacting future resource availability. Conventional greedy approaches that dispatch the nearest available unit without accounting for the supply-demand dynamics within its catchment area can lead to suboptimal outcomes. In this project, I introduce a dynamic penalty-based dispatching strategy that penalizes dispatches from high-demand, low-coverage areas for low-priority calls, with the aim of conserving resources for potential high-priority emergencies. First, a discrete event simulation (DES) model is developed to replicate EMS operations under various dispatching policies in synthetic environments. The proposed heuristic dispatching policy is tested in large-scale simulations, evaluated through multiple randomized episodes, and compared against the greedy policy. 
 
 # Discrete event simulation
