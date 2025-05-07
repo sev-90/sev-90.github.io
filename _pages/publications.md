@@ -7,8 +7,8 @@ author_profile: true
 
 2025
 ----
-7. **Dynamic penalty-based dispatching decision-making for improved EMS response in urban environments: a heuristic approach**\
-Sevin Mohammadi, Audrey Olivier, Andrew W. Smyth, under review.
+7. [**Dynamic penalty-based dispatching decision-making for improved EMS response in urban environments: a heuristic approach**](https://www.frontiersin.org/journals/future-transportation/articles/10.3389/ffutr.2025.1540502/abstract)\
+Sevin Mohammadi, Audrey Olivier, Andrew W. Smyth, Frontiers in Future Transportation.
 
 2024
 ----
@@ -18,7 +18,7 @@ Sevin Mohammadi, Andrew W. Smyth, under review.
 2023
 ----
 5. [**Probabilistic prediction of trip travel time and its variability using hierarchical Bayesian learning**](https://doi.org/10.1061/AJRUA6.RUENG-981)\
-Sevin Mohammadi, Audrey Olivier, Andrew W. Smyth, Accepted in ASCE-ASME Journal of Risk and Uncertainty in Engineering Systems, Part A. [Code](https://github.com/sev-90/HierarchicalBayesianRegression)
+Sevin Mohammadi, Audrey Olivier, Andrew W. Smyth, ASCE-ASME Journal of Risk and Uncertainty in Engineering Systems, Part A. [Code](https://github.com/sev-90/HierarchicalBayesianRegression)
 4. [**Bayesian neural networks with physics-aware regularization for probabilistic travel time modeling**](https://doi.org/10.1111/mice.13047)\
 Audrey Olivier, Sevin Mohammadi, Andrew W. Smyth, Matt Adams, Computer‐Aided Civil and Infrastructure Engineering.
 
