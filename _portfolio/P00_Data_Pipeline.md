@@ -11,5 +11,5 @@ for intuitive dashboards and interactive visualizations. "
 ---
 
 <p align="center">
-<img src="/images/analytics_visualization.png" width="800" height="800" />
+<img src="/images/analytics_visualization.png" width="1000" height="1000" />
 </p>
