@@ -9,6 +9,18 @@ author_profile: true
 
 
 {% for post in site.portfolio %}
-  {% include archive-single.html %}
+  <article class="portfolio-entry">
+    <h2>{{ post.title }}</h2>
+    {% if post.date %}
+      <p><em>{{ post.date | date: "%B %Y" }}</em></p>
+    {% endif %}
+    {% if post.abstract %}
+      <p><strong>Abstract:</strong> {{ post.abstract }}</p>
+    {% endif %}
+    <div class="portfolio-content">
+      {{ post.content }}
+    </div>
+    <hr>
+  </article>
 {% endfor %}
 
