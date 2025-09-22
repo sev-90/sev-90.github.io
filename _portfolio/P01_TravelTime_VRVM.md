@@ -17,7 +17,7 @@ Before training the VRVM model using travel time data sets, the implemented VRVM
 2. **Boston housing** data sets,
 and compare the results with repoted results in literature review.
 
-## Sinc function
+### Sinc function
 Using the suggested synthetic data generation in [1], we evaluate the performance of the VRVM model through three different trials. The **Gaussian kernel** is used for training the VRVM models. For each trial, we generate 100 noisy target values, $y$, at 100 linearly selected $x$ from $x \in [-10,10]$ using the function $Sinc(x)=sin(x)/x$ with **Gaussian additive noise** with standard deviations of 0.1, 0.2, and 0.3, respectively. The noise estimate and the root-mean-square (RMS) deviation from the true function evaluated at 1000 linearly spaced test samples in $[-10,10]$ averaged over 100 random instantiations of the noise are presented at table 1. The reported RMS deviation from the true function for Gaussian additive noise 0.1 is 0.038 [2].
 
 ![image](https://github.com/user-attachments/assets/416136e3-f0cb-4cfa-8945-ff24cc66606d)
@@ -26,7 +26,7 @@ Using the suggested synthetic data generation in [1], we evaluate the performanc
 <img src="/images/sinc.png" width="400" height="400" />
 </p>
 
-## Boston housing data
+### Boston housing data
 The housing data set contains 506 examples for median housing prices with 13 feature variables. We train the VRVM model using Gaussian kernel and based on housing data to predict housing prices. The averaged results for 10 randomly partitioned Boston Housing data into 481 training, and 25 test data sets are presented in table 1. The estimated noise and the mean squared error are 2.42 and 9.84, respectively, whereas the corresponding values reported at [2] are 2.49 and 10.36 ([2] utilized third order polynomial kernel), and the slight difference might be due to random data partition and different kernel type used.
  
 <p align="center">
@@ -55,10 +55,10 @@ In contrast, for very short trips and very long trips, the model's performance d
 ![image](https://github.com/user-attachments/assets/653db434-ec28-47da-99ef-9add1cf8c8f6)
 
 
-# Methodology
+## Methodology
 The variational relevance vector machine is a kernel-based probabilistic machine learning algorithm that is formulated based on the sparse Bayesian learning [1-2]. This algorithm has a functional form equivalent to the support vector machine while using a sparse set of basis functions gives higher generalization performance. In sparse Bayesian learning, most parameters are automatically estimated as zero, and only a few ``relevance'' parameters are non-zero. Therefore, this approach finds a set of relevant basis functions that can be used to make efficient predictions. Sparse Bayesian learning poses prior distributions over model parameters and hyperparameters and estimates their posteriors using optimization. While the posterior distributions of most irrelevant parameters become zero, the remaining parameters are relevant parameters for the predictions. In the variational relevance vector machine, variational inference approximates the optimal posterior distributions. The following section will summarize the Bayesian model structure and the variational posteriors.
 
-## Model specification
+### Model specification
 Suppose our data is $\mathcal{D} = \{(\textbf{x}_i, y_i) | i=1,\dots, n\}$ where $\textbf{x}_i \in \mathbb{R}^d$ is the input feature vector, and $y_i \in \mathbb{R}$ is the target scalar. From historical data, our goal is to learn a model that given input vector $x_i$ outputs the value of the target variable $y_i$. In our travel time modeling context, using historical trip data, we train a probabilistic model that predicts the route travel time given origin-destination coordinations and the trip's start time. The probabilistic framework enables us to model the uncertainties in the travel times predictions by estimating both aleatoric and epistemic uncertainties that are attributed, to name a few, to the inherent stochasticity of the phenomenon, lack of enough knowledge, and imperfection model structure assumption. Based on the standard probabilistic formulation, the target value can be calculated by a function $f$ parametrized by $w$ as equation:
 
 $$ y_i = f(x_i;w) + \epsilon_i $$
@@ -86,7 +86,7 @@ We define $\sigma^2_w = (\lambda\Lambda)^{-1}$ where $\Lambda=\text{diag}(\alpha
 
 In fully Bayesian paradigm, following the hierarchical prior setting, the variational RVM method considers hyperpriors over hyperparameters. To benefit from analytical propertries of the Gaussian distributions' conjugate priors, we pose a Gamma prior distribution over inverse noise variance, $\lambda$, as $p(\lambda)=\text{Gamma}(e_0,f_0)$ and a Gamma hyperprior distribution over $\alpha_k,k \in [1,\dots,m]$ as $p(\alpha_k)=\text{Gamma}(a_0,b_0)$. Initially, we set small values for $a_0$, $b_0$, $e_0$, and $f_0$ to have non-informative priors. This method called ``Automatic Relevance Determination (ARD)"  that automatically selects the relevant parameters $w_i$ based on the variance of the parameter $\sigma^2_{w_i}$ [2].
 
-## Predictive Distribution
+### Predictive Distribution
 Bayesian learning aims at estimating the predictive posterior distribution of the future observation $y'$ for corresponding new input vector $x'$ given all previously observed data $(y,X)$ and the same modeling assumptions. The posterior predictive distribution is the marginalization of the likelihood over the posterior distributions of the model parameters, shown by
 
 $$
@@ -114,10 +114,10 @@ $$
 $$ 
 
 The following section shows how to solve this optimization objective function.
-## Variational Inference
+### Variational Inference
 It is not easy in many complex statistical models with a Bayesian setting, or sometimes it is impossible to derive an exact analytical expression for the inference. Monte Carlo sampling techniques are the alternatives for estimating distributions for such intractable analytical solutions. While in such models with many parameters or in a large data set, using Monte Carlo sampling techniques are computationally expensive. Variational inference is another alternative that poses an assumption on the family of posteriors and then uses optimization to find the optimal member of the family. Therefore, variation inference gives exact closed-form expression for the approximated inference. Even though VI is often faster when dealing with large data sets or complex models, in contrast to the sampling techniques that are often unbiased and produced samples from the target distribution, it is not guaranteed that the target posterior distribution is in the same family as assumed posterior family $\mathcal{Q}$.
 
-### Variational Inference Objective Function
+#### Variational Inference Objective Function
 The KL divergence calculation requires the calculation of evidence part $p(y)$, which is hard to obtain in our case. In such cases, instead of minimizing the whole equation, the optimization objective can be held by maximizing the negative of the two first terms, also called evidence lower bound (ELBO). Thereby, maximizing ELBO equivalently minimizes the KL divergence measure (for more detail, see [5]).
 
 In our modeling context, approximating the joint posteriorof parameters as $p(w,\lambda, \alpha_1,...,\alpha_m\|y,X)$ with $q(w,\lambda, \alpha_1,\dots,\alpha_m)$, the ELBO objective function which we represent by $\mathcal{L}$  can be presented by 
@@ -134,7 +134,7 @@ $$
 
 Next, we utilize the variational inference technique to derive a closed-form expression for each approximate posterior of model parameters.
 
-## Approximate Inferences
+### Approximate Inferences
 To find the optimal approximate posterior distribution say $q^*(\theta_j)$, the procedure is the exponentiation of the expected log of the joint probability of observed data and parameters taken over all parameters except the parameter $j$, i.e., $q(\theta_{-j})$ (the details of derivation can be found in [2]:
 
 $$
@@ -203,7 +203,7 @@ $$
 
 where the variance parameter of the distribution quantifies the aleotric and epistemic uncertainties in the predicted travel times.
 
-## Ensemble Prediction
+### Ensemble Prediction
 The CAVI optimization algorithm becomes expensive for large data sets in the variational relevance vector machine. The computation scale of the VRVM algorithm is $\mathcal{O}(N^3)$, and this is due to the existence of the covariance matrix inverse operation in computing weights posterior distributions. Hence, this method is not scalable for larger data sets unless an appropriate training process is adopted. One way to make use of this approach for large data sets is to take advantage of the ARD property of the method, such that iteratively adding new basis functions and pruning non-relevance ones. To prune insignificant basis functions, either a weight threshold or a threshold for hyperparameter of $\alpha$ can be used. Another way to make this approach practical is to train different ensembles of the VRVM model in parallel with different samples of data and then average predictions. To do so, the ensemble prediction can be treated as uniformly weighted mixture model of the predictive distributions defined as [6],
 
 $$
