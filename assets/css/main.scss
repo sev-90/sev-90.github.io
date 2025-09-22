@@ -9,6 +9,27 @@
  *  - https://twitter.com/mmistakes
  *
 */
+.collapsible {
+  background-color: #f2f2f2;
+  color: #333;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+.active, .collapsible:hover {
+  background-color: #ddd;
+}
+
+.content {
+  display: none;
+  padding: 0 12px;
+  margin-top: 8px;
+}
 
 @import "vendor/breakpoint/breakpoint"; // media query mixins
 @import "variables";
