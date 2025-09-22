@@ -14,10 +14,13 @@ author_profile: true
     {% if post.date %}
       <p><em>{{ post.date | date: "%B %Y" }}</em></p>
     {% endif %}
+
     {% if post.abstract %}
       <p><strong>Abstract:</strong> {{ post.abstract }}</p>
     {% endif %}
-    <div class="portfolio-content">
+
+    <button class="collapsible">Read more</button>
+    <div class="content">
       {{ post.content }}
     </div>
     <hr>
