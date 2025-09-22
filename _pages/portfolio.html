@@ -7,7 +7,6 @@ author_profile: true
 
 {% include base_path %}
 
-
 {% for post in site.portfolio %}
   <article class="portfolio-entry">
     <h2>{{ post.title }}</h2>
@@ -26,4 +25,21 @@ author_profile: true
     <hr>
   </article>
 {% endfor %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var coll = document.getElementsByClassName("collapsible");
+  for (var i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+});
+</script>
 
