@@ -2,13 +2,14 @@
 title: "Spatial and temporal pattern of light-duty vehicles' emission using Kriging and autoregressive models"
 excerpt: "This project was completed as part of my Data Modeling course's final project in 2021."
 collection: portfolio
+abstract: "The contribution of the transportation system to air pollution is not negligible. A large part of this emission contribution comes from gasoline fuel vehicles. Understanding vehicular emission behavior can help policymakers leverage existing strategies, mitigate fuel consumption and emission rates, and thus have clean air. Analyzing GPS trajectory data can extract useful information regarding spatial and temporal vehicular emissions in a city. In this project, I aim to analyze the light-duty vehicle trajectory data set to present new insights regarding the spatial and temporal pattern of vehicular emission in New York City."
 ---
 
 
 Spatial and temporal pattern of light-duty vehicles' emission in Manhattan, NY, using Kriging and autoregressive models
 
-## Motivation
-The contribution of the transportation system to air pollution is not negligible. A large part of this emission contribution comes from gasoline fuel vehicles. Understanding vehicular emission behavior can help policymakers leverage existing strategies, mitigate fuel consumption and emission rates, and thus have clean air. Analyzing GPS trajectory data can extract useful information regarding spatial and temporal vehicular emissions in a city. In this project, I aim to analyze the light-duty vehicle trajectory data set to present new insights regarding the spatial and temporal pattern of vehicular emission in New York City. 
+<!--## Motivation
+The contribution of the transportation system to air pollution is not negligible. A large part of this emission contribution comes from gasoline fuel vehicles. Understanding vehicular emission behavior can help policymakers leverage existing strategies, mitigate fuel consumption and emission rates, and thus have clean air. Analyzing GPS trajectory data can extract useful information regarding spatial and temporal vehicular emissions in a city. In this project, I aim to analyze the light-duty vehicle trajectory data set to present new insights regarding the spatial and temporal pattern of vehicular emission in New York City. -->
 
 
 ## Data
