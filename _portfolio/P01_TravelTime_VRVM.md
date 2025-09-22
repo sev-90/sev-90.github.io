@@ -23,7 +23,7 @@ Using the suggested synthetic data generation in [1], we evaluate the performanc
 ![image](https://github.com/user-attachments/assets/416136e3-f0cb-4cfa-8945-ff24cc66606d)
 
 <p align="center">
-<img src="/images/sinc.png" width="400" height="400" />
+<img src="/images/sinc.png" width="1000" height="1000" />
 </p>
 
 ### Boston housing data
