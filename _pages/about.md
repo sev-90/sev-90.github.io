@@ -9,7 +9,7 @@ redirect_from:
   - /about.html
 ---
 {% include seo.html %}
-I'm Sevin Mohammadi, a **Data Engineer and Scientist**. I grew up in the honey city 🍯🐝, nestled between Mount Sabalan 🗻 and the Caspian Sea 🌊 , surrounded by the scenic green Heyran Road 🏞 🍃, hazelnut forests 🌳 🌰, and has lots of natural hot springs ♨ 🏊‍♀️, all of which shaped many of my cherished childhood memories.
+I'm Sevin Mohammadi, a **Data Engineer and Scientist**. I grew up in the honey city 🍯🐝, nestled between Mount Sabalan 🗻 and the Caspian Sea 🌊 , surrounded by the scenic green Heyran Road 🏞 🍃, hazelnut trees 🌳 🌰, and has lots of natural hot springs ♨ 🏊‍♀️, all of which shaped many of my cherished childhood memories.
 
 I moved to the United States to pursue my dreams and continue my graduate education. I earned a master’s in **Transportation Engineering** from the University of Tennessee, Knoxville, followed by a PhD in engineering with a **Smart Cities** focus from the Civil Engineering and Engineering Mechanics Department at **Columbia University in the City of New York**. I successfully defended my PhD dissertation, "Geospatial Probabilistic Machine Learning for Analyzing Urban Vehicular Mobility Patterns with Decision-Making Applications," in December 2024. Soon after, I was promoted to **Staff Associate II** in the [Center for Smart Streetscapes at Columbia University](https://cs3-erc.org/). 
 
