@@ -11,13 +11,13 @@ redirect_from:
 
 # Education
 * Columbia University in the City of New York
-  PhD in Civil Engineering- Smart Cities
+  - PhD in Civil Engineering- Smart Cities
 * University of Tennessee Knoxville,
-  Master of Science in Civil Engineering- Transportation Engineering
+  - Master of Science in Civil Engineering- Transportation Engineering
 
 # Work Experience
 * Center for Smart Streetscapes (CS3), Columbia University
-  Staff Associate II
+  - Staff Associate II
 
 # Skills
 * Big data pipeline, analytics, and solution
