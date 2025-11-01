@@ -20,7 +20,7 @@ redirect_from:
   - Staff Associate II
 
 ## Skills
-* Big data pipeline, analytics, and solution
+* Big data pipelines, analytics, and solutions.
   
   
 
