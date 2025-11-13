@@ -19,7 +19,7 @@ The stack utilized: S3, Athena, Glue, Redshift Serverless, QuickSight, Quick Sui
 
 ## Goal
 
-Build a small but realistic **batch analytics pipeline** on AWS, ending with a **Redshift‑backed dashboard** (QuickSight/ Quick Suite) and a clean star schema.
+Build a small but realistic **batch analytics pipeline** on AWS for analysing sales data of an imaginary e-commerce company Coffeeco. Simulating daily orders data, ingesting to AWS S3 Bronze layer, cataloging data with Glue, curating data with Athena, and ingesting curated orders to S3 Curated layer. Creating views, materialized views, internal, and external tables in Redshift warehouse and creating a clean star schema (fact and dimension tables), eventually developing a **Redshift‑backed dashboard** in QuickSight and Quick Suite KPI and business insights.
 
 ---
 # Tech Stack
@@ -72,8 +72,10 @@ s3://mybucket/
 - Transactional daily refresh (idempotent pattern).
 
 ## 5) BI Surface & Dashboard (QuickSight)
-- QuickSight:
--- Import from Redshift or Athena
--- Use SPICE for speed
--- Visuals
--- Add an Quick Suite narrative for business insights 
+
+### QuickSight:
+
+- Integrate data sources from Redshift
+- Use SPICE for speed
+- Visuals: Temporal line chart, stacked bar chart, heatmap, etc.
+- Generate a Quick Suite narrative for business insights 
