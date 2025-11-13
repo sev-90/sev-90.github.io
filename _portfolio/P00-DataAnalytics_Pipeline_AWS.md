@@ -1,5 +1,5 @@
 ---
-title: "CoffeeCo Sales Analytics — AWS Data Engineering Mini-Project"
+title: "CoffeeCo Sales Analytics: AWS Data Engineering Mini-Project"
 excerpt: ""
 collection: portfolio
 abstract: "This project showcases an end-to-end AWS analytics pipeline using synthetically (fake) generated e-commerce orders. Raw CSVs land in Amazon S3 (bronze), are standardized into partitioned Parquet via Amazon Athena with metadata in AWS Glue (curated), then modeled in Amazon Redshift Serverless—validated through Spectrum and materialized into internal tables with a simple star schema and materialized views for fast reads. A QuickSight (SPICE) dashboard surfaces KPIs, trends, and cancellation insights.
