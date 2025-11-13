@@ -15,59 +15,41 @@ abstract: "Build a small but realistic batch analytics pipeline on AWS, ending w
 
 ## Goal
 
-Build a small but realistic **batch analytics pipeline** on AWS, ending with a **Redshift‑backed dashboard** (QuickSight/ Quick Suite) and a clean star schema you can demo in interviews.
+Build a small but realistic **batch analytics pipeline** on AWS, ending with a **Redshift‑backed dashboard** (QuickSight/ Quick Suite) and a clean star schema.
+
+---
+# Tech Stack
+
+- **Storage:** Amazon S3 (_bronze_ + _curated_)
+- **Metadata / Query:** AWS Glue Data Catalog, Amazon Athena (CTAS / INSERT)
+- **Warehouse:** Amazon Redshift **Serverless** (Spectrum + internal tables, Materialized Views)
+- **Visualization:** Amazon QuickSight (SPICE); Business insights from Quick Suite
+- **Languages:** SQL (Athena / Redshift), a bit of Python / Spark
+- **IAM & Networking:** IAM roles for Spectrum/COPY, public endpoint
 
 ---
 
-## Architecture (batch path)
+# 📦 Data Model
 
-```
-[Synthetic CSV orders] -> S3 (bronze)
-         |
-         v
-Athena CTAS (typed, Parquet, partitioned by order_date)
-         |
-         v
-S3 (curated Parquet)  +  Glue/Athena Catalog (external table)
-         |
-         v
-Redshift Serverless
-  - External schema (Spectrum) -> queries S3 directly
-  - Internal tables (INSERT…SELECT)
-  - Star schema + Materialized Views
-         |
-         v
-QuickSight (SPICE) — visuals + Insight narrative + KPIs
-```
+- **Grain:** `order line`
+- **Columns (curated):**  
+  `order_id, event_ts, customer_id, state, product_name, unit_price, quantity, order_total, status, order_date (partition)`
+- **Partitions:** `order_date` (daily)
 
 ---
 
-## Stack
+# What I Implemented
 
-* **Storage:** Amazon S3 (bronze + curated)
-* **Metadata/Query:** AWS Glue Data Catalog, Amazon Athena (CTAS/INSERT)
-* **Warehouse:** Amazon Redshift Serverless (Spectrum + internal tables, Materialized Views)
-* **Visualization:** Amazon QuickSight (SPICE, KPI/line/heatmap + Insight)
-* **Languages:** SQL (Athena/Redshift)
-* **IAM/Networking:** Spectrum role, SG/NACL/VPC (or public endpoint for demo)
+## 1) Land & Curate
 
----
+- Generated fake **daily orders (CSV)** → `s3://.../bronze/`
+- Created **curated Parquet** with strict types and **daily partitions** (`order_date`) → `s3://.../curated/`
 
-## Data
+```bash
+# Example S3 layout
+s3://mybucket/
+├── bronze/
+│   └── orders/ingest_date=2025-11-10/orders_2025-11-10.csv
+└── curated/
+    └── orders/order_date=2025-11-10/part-0000.parquet
 
-* **Domain:** e‑commerce order lines
-* **Grain:** one row per order line
-* **Partitioning:** daily by `order_date`
-
-
----
-
-## 1) Land & Curate (Athena)
-
-Create curated Parquet with strict types and daily partitions:
-
----
-
-## 2) Redshift: External access (Spectrum)
-
-Create an **external schema** that points to the Glue Catalog DB and verify reads
