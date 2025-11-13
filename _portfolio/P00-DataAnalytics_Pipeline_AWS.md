@@ -2,8 +2,9 @@
 title: "CoffeeCo Sales Analytics — AWS Data Engineering Mini-Project"
 excerpt: ""
 collection: portfolio
-abstract: "Build a small but realistic batch analytics pipeline on AWS, ending with a Redshift-backed dashboard 
-(QuickSight and Quick Suite) and a clean star schema."
+abstract: "This project showcases an end-to-end AWS analytics pipeline using synthetically (fake) generated e-commerce orders. Raw CSVs land in Amazon S3 (bronze), are standardized into partitioned Parquet via Amazon Athena with metadata in AWS Glue (curated), then modeled in Amazon Redshift Serverless—validated through Spectrum and materialized into internal tables with a simple star schema and materialized views for fast reads. A QuickSight (SPICE) dashboard surfaces KPIs, trends, and cancellation insights.
+
+The stack utilized: S3, Athena, Glue, Redshift Serverless, QuickSight, Quick Suite."
 
 ---
 
@@ -53,3 +54,8 @@ s3://mybucket/
 └── curated/
     └── orders/order_date=2025-11-10/part-0000.parquet
 
+QuickSight:
+- Import from Redshift or Athena
+- Use SPICE for speed
+- Visuals
+- Add an Quick Suite narrative for business insights 
