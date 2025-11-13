@@ -1,5 +1,5 @@
 ---
-title: "End-to-End Data Pipeline for NYC Taxi Rides Analysis: GCP Data Engineering Mini-Project"
+title: "NYC Taxi Rides Analysis: GCP Data Engineering Mini-Project"
 excerpt: ""
 collection: portfolio
 abstract: "This project demonstrates the use of a modern data engineering technology stack to design and deploy an end-to-end data workflow, covering the full lifecycle from ETL/ELT processing to data visualization dashboard and deployment. In this project,  
