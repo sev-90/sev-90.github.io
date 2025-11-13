@@ -12,9 +12,9 @@ The stack utilized: S3, Athena, Glue, Redshift Serverless, QuickSight, Quick Sui
 
 > **Batch pipeline, Redshift analytics, and QuickSight dashboard**
 
-<a href="files/coffeeco_aws.pdf">
-  <img src="img/dashboard_thumb.png" alt="CoffeeCo Dashboard" width="600">
-</a>
+<p align="center">
+<img src="/images/Coffeeco_QuickSight_dashboard.png" width="1000" height="1000" />
+</p>
 ---
 
 ## Goal
