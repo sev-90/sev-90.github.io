@@ -50,11 +50,13 @@ Build a small but realistic **batch analytics pipeline** on AWS for analysing sa
 - Created **curated Parquet** with strict types and **daily partitions** (`order_date`) → `s3://.../curated/`
 
 ### Example S3 layout
-`s3://mybucket/
+```text
+s3://mybucket/
 ├── bronze/
 │   └── orders/ingest_date=2025-11-10/orders_2025-11-10.csv
 └── curated/
-    └── orders/order_date=2025-11-10/part-0000.parquet`
+    └── orders/order_date=2025-11-10/part-0000.parquet
+```
 
 ## 2) Wire Redshift (read S3 first, then load)
 
