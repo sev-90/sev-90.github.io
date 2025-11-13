@@ -33,7 +33,7 @@ Build a small but realistic **batch analytics pipeline** on AWS, ending with a *
 
 ---
 
-# 📦 Data Model
+# Data Model
 
 - **Grain:** `order line`
 - **Columns (curated):**  
@@ -49,16 +49,31 @@ Build a small but realistic **batch analytics pipeline** on AWS, ending with a *
 - Generated fake **daily orders (CSV)** → `s3://.../bronze/`
 - Created **curated Parquet** with strict types and **daily partitions** (`order_date`) → `s3://.../curated/`
 
-```bash
-# Example S3 layout
+### Example S3 layout
 s3://mybucket/
 ├── bronze/
 │   └── orders/ingest_date=2025-11-10/orders_2025-11-10.csv
 └── curated/
     └── orders/order_date=2025-11-10/part-0000.parquet
 
-QuickSight:
-- Import from Redshift or Athena
-- Use SPICE for speed
-- Visuals
-- Add an Quick Suite narrative for business insights 
+## 2) Wire Redshift (read S3 first, then load)
+
+- Created Redshift external schema to Glue DB (Spectrum).
+
+- Sanity checked counts & partitions from S3.
+
+- Built materialized view for daily sales.
+
+## 3) Create internal warehouse tables (fast analytics)
+
+## 4) Star schema + repeatable daily rebuild
+
+- Dimensions + fact
+- Transactional daily refresh (idempotent pattern).
+
+## 5) BI Surface & Dashboard (QuickSight)
+- QuickSight:
+-- Import from Redshift or Athena
+-- Use SPICE for speed
+-- Visuals
+-- Add an Quick Suite narrative for business insights 
