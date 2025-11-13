@@ -1,0 +1,73 @@
+---
+title: "CoffeeCo Sales Analytics — AWS Data Engineering Mini-Project"
+excerpt: ""
+collection: portfolio
+abstract: "Build a small but realistic batch analytics pipeline on AWS, ending with a Redshift-backed dashboard 
+(QuickSight and Quick Suite) and a clean star schema."
+
+---
+
+# CoffeeCo Sales Analytics — AWS Data Engineering Mini‑Project
+
+> **Batch pipeline, Redshift analytics, and QuickSight dashboard**
+
+---
+
+## Goal
+
+Build a small but realistic **batch analytics pipeline** on AWS, ending with a **Redshift‑backed dashboard** (QuickSight/ Quick Suite) and a clean star schema you can demo in interviews.
+
+---
+
+## Architecture (batch path)
+
+```
+[Synthetic CSV orders] -> S3 (bronze)
+         |
+         v
+Athena CTAS (typed, Parquet, partitioned by order_date)
+         |
+         v
+S3 (curated Parquet)  +  Glue/Athena Catalog (external table)
+         |
+         v
+Redshift Serverless
+  - External schema (Spectrum) -> queries S3 directly
+  - Internal tables (INSERT…SELECT)
+  - Star schema + Materialized Views
+         |
+         v
+QuickSight (SPICE) — visuals + Insight narrative + KPIs
+```
+
+---
+
+## Stack
+
+* **Storage:** Amazon S3 (bronze + curated)
+* **Metadata/Query:** AWS Glue Data Catalog, Amazon Athena (CTAS/INSERT)
+* **Warehouse:** Amazon Redshift Serverless (Spectrum + internal tables, Materialized Views)
+* **Visualization:** Amazon QuickSight (SPICE, KPI/line/heatmap + Insight)
+* **Languages:** SQL (Athena/Redshift)
+* **IAM/Networking:** Spectrum role, SG/NACL/VPC (or public endpoint for demo)
+
+---
+
+## Data
+
+* **Domain:** e‑commerce order lines
+* **Grain:** one row per order line
+* **Partitioning:** daily by `order_date`
+
+
+---
+
+## 1) Land & Curate (Athena)
+
+Create curated Parquet with strict types and daily partitions:
+
+---
+
+## 2) Redshift: External access (Spectrum)
+
+Create an **external schema** that points to the Glue Catalog DB and verify reads
